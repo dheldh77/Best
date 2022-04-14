@@ -13,7 +13,7 @@
 |삼성전자|김민석||||
 
 
-## 👍 3. Rule
+## 👍 3. Code Review Rule
 - 매일 가벼운 인사로 시작합니다.
 - 1일 1커밋을 합니다.
 - 코드리뷰를 받고 싶을 때 PR 시에 전반적인 설명을 적습니다.
@@ -23,7 +23,13 @@
 - 네이밍에 대한 조언은 함수가 어떤 역할을 수행하는지 뚜렷하지 않을 떄 합니다.
 - 코드리뷰는 실력이 좋은 사람이 하는 것이 아닙니다.
 
-## 📘 4. Reference
+## 👍 4. PR Rule
+PR Rule
+- prefix는 클래스 명
+- PR 시 간단한 설명
+- 과반수 이상 승인 시에 Merge
+
+## 📘 5. Reference
 - [Groud Rule](https://app.sli.do/event/bE61HmGBotM1S8qv1BtLS2/live/polls)
 - [Sprint](https://carnation-belief-5ee.notion.site/bf110aee0db8430bad07e9a0378b1cbf?v=5506304380b84935a5c6a0923827244b)
 - [OOP_Design_pattern_ref](https://carnation-belief-5ee.notion.site/3-Architect-Design-680ae934fd0044a3908c3dfc7b53d9ec)
