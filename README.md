@@ -25,3 +25,5 @@
 
 ## 📘 4. Reference
 - [Groud Rule](https://app.sli.do/event/bE61HmGBotM1S8qv1BtLS2/live/polls)
+- [Sprint](https://carnation-belief-5ee.notion.site/bf110aee0db8430bad07e9a0378b1cbf?v=5506304380b84935a5c6a0923827244b)
+- [OOP_Design_pattern_ref](https://carnation-belief-5ee.notion.site/3-Architect-Design-680ae934fd0044a3908c3dfc7b53d9ec)
