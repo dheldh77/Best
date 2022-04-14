@@ -3,4 +3,15 @@ public class Commander {
     Executer executer;
     Printer printer;
 
+    public void Read(){
+
+    }
+
+    public void Execute(){
+
+    }
+
+    public void Print(){
+
+    }
 }
