@@ -37,6 +37,6 @@ public class InputOption {
     }
 
     private void setOption(String opt){
-        options.set(parameters.get(opt).ordinal(), true)
+        options.set(parameters.get(opt).ordinal(), true);
     }
 }
