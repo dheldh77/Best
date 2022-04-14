@@ -1,6 +1,6 @@
 public class Commander {
     Reader reader;
-    Executer executer;
+    Executor executor;
     Printer printer;
 
     public void Read(){
