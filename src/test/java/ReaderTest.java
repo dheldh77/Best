@@ -7,7 +7,7 @@ public class ReaderTest {
     @Test
     void readTest(){
         Reader reader = new Reader();
-        List<String > lines = reader.read("../resources/input_20_20.txt");
+        List<String > lines = reader.read("src\\test\\resources\\input_20_20.txt");
         assertEquals(lines.size(), 40);
 
         for(String line : lines){
