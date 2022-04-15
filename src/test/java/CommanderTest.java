@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -29,10 +28,12 @@ public class CommanderTest {
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
+        cmd.add("15123099");
+        cmd.add("VXIHXOTH JHOP");
+        cmd.add("CL3");
+        cmd.add("010-3112-2609");
+        cmd.add("19771211");
+        cmd.add("ADV");
         commander.init();
         Method method = commander.getClass().getDeclaredMethod("Execute", ArrayList.class);
         method.setAccessible(true);
@@ -45,10 +46,12 @@ public class CommanderTest {
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
-        cmd.add("ADD");
+        cmd.add("15123099");
+        cmd.add("VXIHXOTH JHOP");
+        cmd.add("CL3");
+        cmd.add("010-3112-2609");
+        cmd.add("19771211");
+        cmd.add("ADV");
         commander.init();
         Method method = commander.getClass().getDeclaredMethod("Print", InputOption.class, ArrayList.class);
         method.setAccessible(true);
