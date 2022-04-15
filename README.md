@@ -24,12 +24,12 @@
 - 1일 1커밋을 합니다.
 
 ### Commit 
-- [FEAT] 새로운 기능에 대한 커밋
-- [FIX] 버그 수정 등의 수정 건에 대한 커밋
-- [DOCS] 문서 수정에 대한 커밋
-- [STYLE] 코드 스타일 혹은 포맷 등에 관한 커밋
-- [REFACTOR] 코드 리팩토링에 대한 커밋
-- [TEST] 테스트 코드 수정에 대한 커밋
+- [FEAT] xxx : 기능 추가
+- [FIX] xxx : 버그 수정
+- [DOCS] xxx : 문서 수정
+- [STYLE] xxx : 코드 스타일 혹은 포맷 
+- [REFACTOR] xxx : 코드 리팩토링
+- [TEST] xxx : 테스트 코드
 
 ### Coding Style
 - 개인의 코딩 스타일을 존중합니다.
