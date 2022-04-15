@@ -7,7 +7,7 @@
 <br>
 
 ## 🧑‍🤝‍🧑 2. Participants
-|소속|이름|역할|brunch|
+|소속|이름|역할|branch|
 |------|---|---|----|
 |삼성전자|도동훈|Reader, Executor, Printer 클래스|[dev_doh](https://github.com/dheldh77/Best/tree/dev_doh)|
 |삼성전자|민유진|SearchPolicy 관련 클래스|[dev_yj](https://github.com/dheldh77/Best/tree/dev_yj)|
@@ -17,21 +17,32 @@
 
 <br>
 
-## 👍 3. Code Review Rule
+## 👍 3. Ground Rule
+
+### Cooperation
 - 매일 가벼운 인사로 시작합니다.
 - 1일 1커밋을 합니다.
-- 코드리뷰를 받고 싶을 때 PR 시에 전반적인 설명을 적습니다.
-- 코드리뷰는 1000 라인을 넘을 수 없습니다.
-- 코드리뷰는 존중하는 마음으로 합니다.
+
+### Commit 
+- [FEAT] 새로운 기능에 대한 커밋
+- [FIX] 버그 수정 등의 수정 건에 대한 커밋
+- [DOCS] 문서 수정에 대한 커밋
+- [STYLE] 코드 스타일 혹은 포맷 등에 관한 커밋
+- [REFACTOR] 코드 리팩토링에 대한 커밋
+- [TEST] 테스트 코드 수정에 대한 커밋
+
+### Coding Style
 - 개인의 코딩 스타일을 존중합니다.
+
+### Review 
+- PR 시에 전반적인 설명을 적습니다.
+- 코드리뷰는 존중하는 마음으로 합니다.
+- 코드리뷰는 400 라인을 넘을 수 없습니다.
 - 네이밍에 대한 조언은 함수가 어떤 역할을 수행하는지 뚜렷하지 않을 떄 합니다.
 - 코드리뷰는 실력이 좋은 사람이 하는 것이 아닙니다.
 
-<br>
-
-## 💻 4. PR Rule
-- prefix는 클래스 명
-- PR 시 간단한 설명
+### Branch
+- 각 브랜치는 dev_(지정) 으로 사용하고 main에 통합
 - 과반수 이상 승인 시에 Merge
 
 <br>
