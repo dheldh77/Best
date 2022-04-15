@@ -61,7 +61,7 @@
 
 > Class Diagram
 
-![Class Diagram](https://github.com/dheldh77/groupstudy_samsung_mechatronics_RnD/blob/master/oop_design_patterns/2022_03_22/facade1.png)
+![Class Diagram](DesignDocumetation/KakaoTalk_Photo_2022-04-15-09-28-28.png)
 
 <br>
 
