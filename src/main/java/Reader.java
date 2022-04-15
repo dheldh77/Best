@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Reader {
     //private Option option;
-    public static List<String> read(String filename) {
+    public List<String> read(String filename) {
         try {
             return Files.readAllLines(Paths.get(filename));
         } catch (IOException e1) {
