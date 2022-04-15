@@ -13,8 +13,8 @@ public class Commander {
         empService = new EmployeeService();
     }
 
-    private ArrayList<ArrayList<String>> Read(){
-        return null;
+    private ArrayList<ArrayList<String>> Read(String fileName){
+        return reader.read(fileName);
     }
 
     private void Execute(){
@@ -26,7 +26,7 @@ public class Commander {
     }
 
     public void run() {
-        ArrayList<ArrayList<String>> cmd = Read();
+        ArrayList<ArrayList<String>> cmd = Read("fileName");
         Execute();
         Print();
     }
