@@ -59,6 +59,8 @@
 - 소팅 알고리즘 관련 클래스
 - 검색기능을 위해서 사원구조체 객체참조할수있는 해쉬구조체
 
+<br>
+
 > Class Diagram
 
 ![Class Diagram](DesignDocumetation/KakaoTalk_Photo_2022-04-15-09-28-28.png)
