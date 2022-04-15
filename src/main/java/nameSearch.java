@@ -4,10 +4,10 @@ public class nameSearch implements searchPolicy{
     @Override
     public boolean search(String option2, String source) {
         Employee emp = null;
-        if(option2.equals("-f") && source.equals(emp.name.firstName)){
+        if(option2.equals("-f") && source.equals(emp.Name.firstName)){
                     return true;
 
-        }else if(option2.equals("-l") && source.equals(emp.name.firstName)) {
+        }else if(option2.equals("-l") && source.equals(emp.Name.firstName)) {
                 return false;
         }
         return false;
