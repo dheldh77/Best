@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Reader {
@@ -11,22 +12,18 @@ public class Reader {
     public ArrayList<ArrayList<String>> read(String filename) {
         try {
             List<String> cmdList = Files.readAllLines(Paths.get(filename));
-            ArrayList<ArrayList<String>> cmdListExceptOpts = new ArrayList<>();
+            ArrayList<ArrayList<String>> splitCmdList = new ArrayList<>();
 
             for (String cmd : cmdList) {
+                //각 cmd 문자열에 대해 split
                 String[] splitCmd = splitCommand(cmd);
-                String[] opts = {splitCmd[1], splitCmd[2], splitCmd[3]};
-
-                //option.setOptions(opts);
-
                 ArrayList<String> cmdArray = new ArrayList<>();
-                for(int i = 0; i < splitCmd.length; i++){
-                    if(i == 1 || i == 2 || i == 3) continue;
-                    cmdArray.add(splitCmd[i]);
-                }
-                cmdListExceptOpts.add(cmdArray);
+                //Split 된 요소들을 Arraylist에 담는다.
+                Collections.addAll(cmdArray, splitCmd);
+                //Split되어 ArrayList에 담긴 cmd를 ArrayList에 추가한다.
+                splitCmdList.add(cmdArray);
             }
-            return cmdListExceptOpts;
+            return splitCmdList;
         } catch (IOException e1) {
             e1.printStackTrace();
         }
