@@ -4,13 +4,11 @@ public class Commander {
     Reader reader;
     Executor executor;
     Printer printer;
-    EmployeeService empService;
 
     public void init() {
         reader = new Reader();
         executor = new Executor();
         printer = new Printer();
-        empService = new EmployeeService();
     }
 
     private ArrayList<ArrayList<String>> Read(String fileName){
