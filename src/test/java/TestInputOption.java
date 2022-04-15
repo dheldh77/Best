@@ -38,5 +38,12 @@ public class TestInputOption {
         assertAll(() -> assertFalse(inputOption.isActivatedOption(Option.PRINT)),
                 () -> assertTrue(inputOption.isActivatedOption(Option.MIDDLE_OR_MONTH)));
     }
+
+    @Test
+    public void Test_isInvalidOption() {
+        String[] options = {"-p", "-f", "-l"};
+        inputOption.setOptions(options);
+        assertFalse(inputOption.isActivatedOption(Option.FIRST));
+    }
 }
 
