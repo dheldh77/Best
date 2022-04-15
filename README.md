@@ -65,6 +65,7 @@
 
 ![Class Diagram](DesignDocumetation/KakaoTalk_Photo_2022-04-15-09-28-28.png)
 
+<br>
 
 > Class Interface
 - [Class Interface](https://github.com/dheldh77/Best/blob/dev_kms/DesignDocumetation/methodSignature.md)
