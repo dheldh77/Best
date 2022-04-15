@@ -3,7 +3,6 @@ public enum Option {
     MIDDLE_OR_MONTH,
     LAST,
     YEAR,
-    MONTH,
     DAY,
     PRINT
 }

@@ -27,16 +27,20 @@ public class InputOption {
         return INSTANCE;
     }
 
-    public boolean isValidOption(Option option) {
+    public boolean isActivatedOption(Option option) {
         return options.get(option.ordinal());
     }
 
     public void setOptions(String[] args){
         clearOption();
+
         for(String opt : args) {
             if (opt.equals("")) continue;
             setOption(opt);
         }
+
+        if (!isValidOption())
+            clearOption();
     }
 
     private void setOption(String opt){
@@ -46,5 +50,13 @@ public class InputOption {
     private void clearOption() {
         for(int i = 0; i < options.size(); i++)
             options.set(i, false);
+    }
+
+    private boolean isValidOption() {
+        if (isActivatedOption(Option.FIRST) && isActivatedOption(Option.LAST)) return false;
+        if (isActivatedOption(Option.MIDDLE_OR_MONTH) && isActivatedOption(Option.LAST)) return false;
+        if (isActivatedOption(Option.YEAR) && isActivatedOption(Option.MIDDLE_OR_MONTH) &&
+                isActivatedOption(Option.DAY)) return false;
+        return true;
     }
 }
