@@ -4,9 +4,7 @@ public class PhoneNumber {
     private String phoneNum;
 
     public PhoneNumber(String phoneNum){
-        this.phoneNum = phoneNum;
-        this.middleNum = phoneNum.split("-")[1];
-        this.endNum = phoneNum.split("-")[2];
+        setPhoneNum(phoneNum);
     }
 
     public String getMiddleNum() {

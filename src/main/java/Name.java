@@ -5,7 +5,7 @@ public class Name {
         this.firstName = name.split("\\s")[0];
         this.SecondName = name.split("\\s")[1];
     }
-
+    
     public String getFirstName() {
         return firstName;
     }
