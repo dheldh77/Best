@@ -26,7 +26,7 @@ public class Commander {
     }
 
     public void run() {
-        ArrayList<ArrayList<String>> cmd = Read("fileName");
+        ArrayList<ArrayList<String>> cmd = Read("src\\test\\resources\\input_20_20.txt");
         Execute();
         Print();
     }
