@@ -32,11 +32,19 @@ public class InputOption {
     }
 
     public void setOptions(String[] args){
-        for(String opt : args)
+        clearOption();
+        for(String opt : args) {
+            if (opt.equals("")) continue;
             setOption(opt);
+        }
     }
 
     private void setOption(String opt){
         options.set(parameters.get(opt).ordinal(), true);
+    }
+
+    private void clearOption() {
+        for(int i = 0; i < options.size(); i++)
+            options.set(i, false);
     }
 }
