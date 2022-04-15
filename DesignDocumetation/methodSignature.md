@@ -23,3 +23,19 @@
   
 > Printer : 결과 출력 함수
 - public void print(String cmd, ArrayList<Employee> searchResult)
+  
+<br>
+  
+> Commander 
+
+- public void init(); // 변수초기화
+- public void run(); // 동작 시작
+
+<br>
+
+> EmployeeService 
+
+- public ArrayList<Employee> add(String employeeNum, String name, String careerLevel, String phoneNum, String birthday, String certi);
+- public ArrayList<Employee> delete(String type, String value);
+- public ArrayList<Employee> modify(String fromType, String fromValue, String toType, String toValue);
+public ArrayList<Employee> search(String type, String value);
