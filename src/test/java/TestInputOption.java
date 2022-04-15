@@ -14,17 +14,17 @@ public class TestInputOption {
     }
 
     @Test
-    public void Test_isValidOption(){
-        assertFalse(inputOption.isValidOption(Option.DAY));
+    public void Test_isActivatedOption(){
+        assertFalse(inputOption.isActivatedOption(Option.DAY));
     }
 
     @Test
     public void Test_setOptions(){
         String[] options = {"-p", "-f", ""};
         inputOption.setOptions(options);
-        assertAll(() -> assertTrue(inputOption.isValidOption(Option.PRINT)),
-                () -> assertTrue(inputOption.isValidOption(Option.FIRST)),
-                () -> assertFalse(inputOption.isValidOption(Option.DAY)));
+        assertAll(() -> assertTrue(inputOption.isActivatedOption(Option.PRINT)),
+                () -> assertTrue(inputOption.isActivatedOption(Option.FIRST)),
+                () -> assertFalse(inputOption.isActivatedOption(Option.DAY)));
     }
 
     @Test
@@ -35,8 +35,8 @@ public class TestInputOption {
         inputOption.setOptions(previousOptions);
         inputOption.setOptions(nextOptions);
 
-        assertAll(() -> assertFalse(inputOption.isValidOption(Option.PRINT)),
-                () -> assertTrue(inputOption.isValidOption(Option.MIDDLE_OR_MONTH)));
+        assertAll(() -> assertFalse(inputOption.isActivatedOption(Option.PRINT)),
+                () -> assertTrue(inputOption.isActivatedOption(Option.MIDDLE_OR_MONTH)));
     }
 }
 
