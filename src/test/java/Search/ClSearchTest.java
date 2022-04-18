@@ -1,3 +1,5 @@
+package Search;
+
 import Employee.Employee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,6 +10,7 @@ class ClSearchTest {
 
     Employee employee = new Employee("min yujin","20027866","010-4567-2345","19920922","CL2","PRO");
     Employee employee2 = new Employee("min yujin","20027866","010-4567-2345","18201120","CL3","PRO");
+
     @Test
     @DisplayName("CL test")
     public void clTest(){
