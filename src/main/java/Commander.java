@@ -7,7 +7,7 @@ public class Commander {
     EmployeeService empServ;
 
     public void init() {
-//        executor = new Executor(empServ);
+        executor = new Executor(empServ);
         printer = new Printer("Inner");
         empServ = new EmployeeService();
     }
@@ -19,19 +19,14 @@ public class Commander {
     private ArrayList<Employee> Execute(ArrayList<String> cmd){
         switch(cmd.get(0)){
             case "ADD" :
-//                return executor.add(cmd, empServ);
+                executor.add(cmd);
                 break;
             case "MOD" :
-//                return executor.modify(cmd, empServ);
-                break;
+                return executor.modify(cmd);
             case "DEL" :
-//                return executor.delete(cmd, empServ);
-                break;
+                return executor.delete(cmd);
             case "SCH" :
-//                return executor.search(cmd, empServ);
-                break;
-            default :
-//                return null;
+                return executor.search(cmd);
         }
         return null;
     }
@@ -41,8 +36,10 @@ public class Commander {
     }
 
     public void run() {
-        for (ArrayList<String> cmd : Read("src\\test\\resources\\input_20_20.txt")) {
+        ArrayList<ArrayList<String>> cmds = Read("src\\test\\resources\\input_20_20.txt");
+        for (ArrayList<String> cmd : cmds) {
             ArrayList<Employee> employees = Execute(cmd);
+            if (employees == null) continue;
             Print(employees);
         }
     }
