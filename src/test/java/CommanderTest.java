@@ -3,11 +3,11 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class CommanderTest {
+
     @Test
     void initTest(){
         Commander commander = mock(Commander.class);
@@ -40,6 +40,7 @@ public class CommanderTest {
         ArrayList<Employee> result = (ArrayList<Employee>) method.invoke(commander, cmd);
         assertNull(result);
     }
+
     @Test
     void printTest() throws Exception{
         Commander commander = new Commander();
@@ -55,7 +56,7 @@ public class CommanderTest {
         commander.init();
         Method method = commander.getClass().getDeclaredMethod("Print", InputOption.class, ArrayList.class);
         method.setAccessible(true);
-        method.invoke(commander, InputOption.getInstance(), cmd);
-//        verify(commander).print();
+        assertDoesNotThrow(() -> method.invoke(commander, InputOption.getInstance(), cmd));
     }
+
 }
