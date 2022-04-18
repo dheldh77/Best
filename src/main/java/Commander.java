@@ -2,14 +2,14 @@ import Employee.Employee;
 import java.util.ArrayList;
 
 public class Commander {
+    EmployeeService empServ;
     Executor executor;
     Printer printer;
-    EmployeeService empServ;
 
     public void init() {
+        empServ = new EmployeeService();
         executor = new Executor(empServ);
         printer = new Printer("Inner");
-        empServ = new EmployeeService();
     }
 
     private ArrayList<ArrayList<String>> Read(String fileName){
