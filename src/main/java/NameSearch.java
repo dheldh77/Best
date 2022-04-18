@@ -1,12 +1,13 @@
 public class NameSearch implements SearchPolicy {
     InputOption inputOption;
     String source;
-    Employee emp = null;
+    Employee emp;
 
     @Override
-    public boolean search(String source)  {
+    public boolean search(Employee emp, String source)  {
         inputOption = InputOption.getInstance();
         this.source=source;
+        this.emp = emp;
         //option값이 없는 경우
         if(inputOption==null) {
             return matchAll(source);
@@ -22,7 +23,7 @@ public class NameSearch implements SearchPolicy {
     }
 
     private boolean matchPart() {
-        if((inputOption.equals(Option.FIRST) && source.equals(emp.getName().getFirstName()))||(inputOption.equals(Option.LAST) && source.equals(emp.getName().getSecondName()))) {
+        if((inputOption.isActivatedOption(Option.FIRST) && source.equals(emp.getFirstName()))||(inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getSecondName()))) {
             return true;
         }
         return false;
