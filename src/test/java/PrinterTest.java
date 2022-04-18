@@ -23,10 +23,13 @@ public class PrinterTest {
     @Test
     void printNoneTest() {
         ArrayList<Employee> employees = new ArrayList<>();
-        String cmd = "MOD";
+
+        InputOption inputOption = InputOption.getInstance();
+        String[] cmd = {"MOD"," "," "," ","birthday","04"};
+        inputOption.setOptions(cmd);
 
         Printer printer = new Printer("Selection");
-        printer.print(cmd, employees);
+        printer.print(employees);
         assertEquals("MOD,NONE", outContent.toString().replace("\n", "").replace("\r", ""));
 
     }
@@ -34,7 +37,6 @@ public class PrinterTest {
     @Test
     void printRecordCntTest() {
         ArrayList<Employee> employees = new ArrayList<>();
-        String cmd = "MOD";
 
         employees.add(new Employee("VXIHXOTH JHOP", "15123099",
                 "010-3112-2609", "19771211", "CL3", "ADV"));
@@ -48,13 +50,13 @@ public class PrinterTest {
         employees.add(new Employee("SBILHUT LDEXRI", "02117175", "010-2814-1699", "19950704", "CL4", "ADV"));
 
         InputOption inputOption = InputOption.getInstance();
-        String[] opts = {"", "-l", ""};
-        inputOption.setOptions(opts);
+        String[] cmd = {"MOD"," "," "," ","birthday","04"};
+        inputOption.setOptions(cmd);
 
-        assertFalse(inputOption.isActivatedOption(Option.PRINT));
+        assertNotSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
         Printer printer = new Printer("Selection");
-        printer.print(cmd, employees);
+        printer.print(employees);
 
         assertEquals("MOD,9", outContent.toString().replace("\n", "").replace("\r", ""));
     }
@@ -62,7 +64,6 @@ public class PrinterTest {
     @Test
     void printRecordTest() {
         ArrayList<Employee> employees = new ArrayList<>();
-        String cmd = "MOD";
 
         employees.add(new Employee("VXIHXOTH JHOP", "15123099",
                 "010-3112-2609", "19771211", "CL3", "ADV"));
@@ -77,13 +78,13 @@ public class PrinterTest {
 
 
         InputOption inputOption = InputOption.getInstance();
-        String[] opts = {"-p", "-l", ""};
-        inputOption.setOptions(opts);
+        String[] cmd = {"MOD","-p","-d"," ","birthday","04"};
+        inputOption.setOptions(cmd);
 
-        assertTrue(inputOption.isActivatedOption(Option.PRINT));
+        assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
         Printer printer = new Printer("Selection");
-        printer.print(cmd, employees);
+        printer.print(employees);
 
         String result = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\r\n" +
                 "MOD,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV\r\n" +
@@ -98,7 +99,6 @@ public class PrinterTest {
     @Test
     void printRecordSecondNumOrderTest() {
         ArrayList<Employee> employees = new ArrayList<>();
-        String cmd = "MOD";
 
         employees.add(new Employee("VXIHXOTH JHOP", "15123099","010-3112-2609", "19771211", "CL3", "ADV"));
         employees.add(new Employee("FB NTAWR", "17112609", "010-5645-6122", "19861203", "CL4", "PRO"));
@@ -109,13 +109,13 @@ public class PrinterTest {
 
 
         InputOption inputOption = InputOption.getInstance();
-        String[] opts = {"-p", "-l", ""};
-        inputOption.setOptions(opts);
+        String[] cmd = {"MOD","-p","-d"," ","birthday","04"};
+        inputOption.setOptions(cmd);
 
-        assertTrue(inputOption.isActivatedOption(Option.PRINT));
+        assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection");
-        printer.print(cmd, employees);
+        Printer printer = new Printer("Inner");
+        printer.print(employees);
 
         String result = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
                 "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\r\n" +

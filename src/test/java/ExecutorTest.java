@@ -2,22 +2,94 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ExecutorTest {
     @Test
     void addTest() {
-        assertTrue(new Executor().add("05101762", "VCUHLE HMU", "CL4", "010-3988-9289", "20030819", "PRO"));
+        EmployeeService emplServ = new EmployeeService();
+
+        Executor executor = new Executor(emplServ);
+        String inputCmd = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
+        ArrayList<String> cmd = new ArrayList<>(Arrays.asList(inputCmd.split(",")));
+
+        assertEquals(10, cmd.size());
+        executor.add(cmd);
     }
 
+    @Test
     void delTest() {
-        assertTrue(new Executor().delete("employeeNum", "18115040"));
-        assertTrue(new Executor().delete("name", "MPOSXU"));
+        EmployeeService emplServ = new EmployeeService();
+        Executor executor = new Executor(emplServ);
+
+        String inputCmd = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
+        ArrayList<String> cmd = new ArrayList<>(Arrays.asList(inputCmd.split(",")));
+        executor.add(cmd);
+
+        String inputCmd1 = "ADD, , , ,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO";
+        ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
+        executor.add(cmd1);
+
+        // 삭제된 Record 반환
+        ArrayList<Employee> result = executor.delete(cmd1);
+
+        assertEquals(1, result.size());
+        assertEquals("88114052", result.get(0).getEmpNum());
+        assertEquals("NQ LVARW", result.get(0).getName());
+        assertEquals("CL4", result.get(0).getCareer());
+        assertEquals("010-4528-3059", result.get(0).getPhoneNum());
+        assertEquals("19911021", result.get(0).getBirthDate());
+        assertEquals("PRO", result.get(0).getCerti());
     }
 
+    @Test
     void modTest() {
-        assertTrue(new Executor().modify("name", "FB NTAWR", "cl", "CL3"));
+        EmployeeService emplServ = new EmployeeService();
+        Executor executor = new Executor(emplServ);
+
+        String inputCmd = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
+        ArrayList<String> cmd = new ArrayList<>(Arrays.asList(inputCmd.split(",")));
+        executor.add(cmd);
+
+        String inputCmd1 = "ADD, , , ,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO";
+        ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
+        executor.add(cmd1);
+
+        // 변경 전 Record 반환
+        ArrayList<Employee> result = executor.modify(cmd1);
+
+        assertEquals(1, result.size());
+        assertEquals("88114052", result.get(0).getEmpNum());
+        assertEquals("NQ LVARW", result.get(0).getName());
+        assertEquals("CL4", result.get(0).getCareer());
+        assertEquals("010-4528-3059", result.get(0).getPhoneNum());
+        assertEquals("19911021", result.get(0).getBirthDate());
+        assertEquals("PRO", result.get(0).getCerti());
     }
 
+    @Test
     void searchTest() {
-        assertTrue(new Executor().search(Option.FIRST, "name","KYUMOK"));
+        EmployeeService emplServ = new EmployeeService();
+        Executor executor = new Executor(emplServ);
+
+        String inputCmd = "ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV";
+        ArrayList<String> cmd = new ArrayList<>(Arrays.asList(inputCmd.split(",")));
+        executor.add(cmd);
+
+        String inputCmd1 = "ADD, , , ,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO";
+        ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
+        executor.add(cmd1);
+
+        // 찾은 Record 반환
+        ArrayList<Employee> result = executor.search(cmd1);
+
+        assertEquals(1, result.size());
+        assertEquals("88114052", result.get(0).getEmpNum());
+        assertEquals("NQ LVARW", result.get(0).getName());
+        assertEquals("CL4", result.get(0).getCareer());
+        assertEquals("010-4528-3059", result.get(0).getPhoneNum());
+        assertEquals("19911021", result.get(0).getBirthDate());
+        assertEquals("PRO", result.get(0).getCerti());
     }
 }
