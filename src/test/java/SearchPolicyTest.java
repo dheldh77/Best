@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class SearchPolicyTest {
 //all로 검색하는 부분 추가
     ArrayList<Employee>  employees;

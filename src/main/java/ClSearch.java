@@ -1,7 +1,7 @@
-public class ClSearch implements SearchPolicy{
+public class ClSearch implements SearchPolicy {
 
     @Override
-    public boolean search(Employee emp,String source) {
+    public boolean search(Employee emp, String source) {
         return source.equals(emp.getCareer());
     }
 }

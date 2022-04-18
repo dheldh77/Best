@@ -1,4 +1,4 @@
-public class EmployeeNumberSearch implements SearchPolicy{
+public class EmployeeNumberSearch implements SearchPolicy {
 
     @Override
     public boolean search(Employee emp, String source) {
