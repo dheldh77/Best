@@ -10,7 +10,7 @@
 |소속|이름|역할|branch|
 |------|---|---|----|
 |삼성전자|도동훈|Reader, Executor, Printer 클래스|[dev_doh](https://github.com/dheldh77/Best/tree/dev_doh)|
-|삼성전자|민유진|SearchPolicy 관련 클래스|[dev_yj](https://github.com/dheldh77/Best/tree/dev_yj)|
+|삼성전자|민유진|Search 관련 클래스|[dev_yj](https://github.com/dheldh77/Best/tree/dev_yj)|
 |삼성전자|이재효|Commander, EmployeeService 클래스|[dev_jaehyo](https://github.com/dheldh77/Best/tree/dev_jaehyo)|
 |삼성전자|전승혁|Employee 클래스|[dev_jsh](https://github.com/dheldh77/Best/tree/dev_jsh)|
 |삼성전자|김민석|Option.Option 클래스|[dev_kms](https://github.com/dheldh77/Best/tree/dev_kms)|

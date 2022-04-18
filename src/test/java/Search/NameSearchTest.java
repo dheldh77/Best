@@ -1,3 +1,5 @@
+package Search;
+
 import Employee.Employee;
 import Option.InputOption;
 import org.junit.jupiter.api.DisplayName;
@@ -9,10 +11,14 @@ class NameSearchTest {
 
     Employee employee = new Employee("min yujin","20027866","010-4567-2345","19920922","CL2","PRO");
     Employee employee2 = new Employee("park seojoon","19273944","010-4567-2345","18201120","CL3","PRO");
-
+    InputOption inputOption = InputOption.getInstance();
     @Test
     @DisplayName("FullNameSearch test")
     public void fullNameSearchTest(){
+
+        String[]  cmd = {"SCH","","","","name","min yujin"};
+        inputOption.setOptions(cmd);
+
         NameSearch nameSearch = new NameSearch();
         assertTrue(nameSearch.search(employee, "min yujin"));
         assertFalse(nameSearch.search(employee2, "min yujin"));
@@ -23,10 +29,8 @@ class NameSearchTest {
     @DisplayName("FirstNameSearch test")
     public void firstNameSearchTest(){
 
-        String[] options = {"", "-f", ""};
-        InputOption inputOption = InputOption.getInstance();
-
-        inputOption.setOptions(options);
+        String[]  cmd = {"SCH","","-f","","name","min"};
+        inputOption.setOptions(cmd);
 
         NameSearch nameSearch = new NameSearch();
         assertTrue(nameSearch.search(employee, "min"));
@@ -38,10 +42,8 @@ class NameSearchTest {
     @DisplayName("SecondNameSearch test")
     public void secondNameSearchTest(){
 
-        String[] options = {"", "-l", ""};
-        InputOption inputOption = InputOption.getInstance();
-
-        inputOption.setOptions(options);
+        String[]  cmd = {"SCH","","-l","","name","yujin"};
+        inputOption.setOptions(cmd);
 
         NameSearch nameSearch = new NameSearch();
         assertTrue(nameSearch.search(employee, "yujin"));
