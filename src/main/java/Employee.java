@@ -1,4 +1,4 @@
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private Name name;
     private EmployeeNumber employeeNum;
     private PhoneNumber phoneNum;
@@ -57,4 +57,25 @@ public class Employee {
     public String getCerti() {return Certi;}
 
     public void setCerti(String Certi) {this.Certi = Certi;}
+
+    @Override
+    public int compareTo(Employee employee){
+        if(employee.getEmpNumYear() < this.getEmpNumYear()){
+            return 1;
+        }
+        else if(employee.getEmpNumYear() == this.getEmpNumYear()){
+            if(employee.getEmpNumSecondNum() < this.getEmpNumSecondNum()){
+                return 1;
+            }
+            return -1;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return getEmpNum() + "," + getName() + "," + getCareer() + "," + getPhoneNum() + "," + getBirthDate() + getCerti();
+    }
 }
