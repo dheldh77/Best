@@ -1,8 +1,10 @@
+package Option;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestInputOption {
+public class InputOptionTest {
     InputOption inputOption = InputOption.getInstance();
 
     @Test

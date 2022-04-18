@@ -1,10 +1,13 @@
+import Employee.Employee;
+import Option.Option;
+
 public class PhoneSearch implements SearchPolicy {
     InputOption inputOption;
     String source;
     Employee emp ;
 
     @Override
-    public boolean search(Employee emp,String source) {
+    public boolean search(Employee emp, String source) {
         inputOption = InputOption.getInstance();
         this.emp = emp;
         this.source=source;

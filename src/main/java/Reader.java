@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Reader {
-    //private Option option;
+    //private Option.Option option;
     // input 파일을 읽어 line별로 split하고, option들을 따로 분리하여 setOptions를 수행합니다.
     // option들을 제외한 요소들은 arraylist에 담고, 해당 Arraylist들을 Arraylist에 담아 return 합니다.
     public ArrayList<ArrayList<String>> read(String filename) {

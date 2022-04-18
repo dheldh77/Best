@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package Option;
+
+import Option.Option;
+
 import java.util.HashMap;
 
 public abstract class ModeOption {

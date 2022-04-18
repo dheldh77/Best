@@ -1,3 +1,5 @@
+package Employee;
+
 public class Name {
     private String firstName;
     private String SecondName;
