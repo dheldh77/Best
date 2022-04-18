@@ -1,5 +1,7 @@
 import Employee.Employee;
 import Option.Option;
+import Option.InputOption;
+
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
