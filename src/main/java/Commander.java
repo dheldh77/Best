@@ -1,8 +1,5 @@
 import Employee.Employee;
-import Option.InputOption;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Commander {
     Executor executor;
@@ -10,8 +7,8 @@ public class Commander {
     EmployeeService empServ;
 
     public void init() {
-        executor = new Executor();
-        printer = new Printer();
+//        executor = new Executor(empServ);
+        printer = new Printer("Inner");
         empServ = new EmployeeService();
     }
 
@@ -39,16 +36,14 @@ public class Commander {
         return null;
     }
 
-    private void Print(InputOption printOption, ArrayList<Employee> employees){
-//        printer.print(printOption, employees);
+    private void Print(ArrayList<Employee> employees){
+        printer.print(employees);
     }
 
     public void run() {
-        ArrayList<ArrayList<String>> cmds = Read("src\\test\\resources\\input_20_20.txt");
-        for (Iterator<ArrayList<String>> iter = cmds.stream().iterator(); iter.hasNext(); ) {
-            ArrayList<String> cmd = iter.next();
+        for (ArrayList<String> cmd : Read("src\\test\\resources\\input_20_20.txt")) {
             ArrayList<Employee> employees = Execute(cmd);
-            Print(InputOption.getInstance(), employees);
+            Print(employees);
         }
     }
 }
