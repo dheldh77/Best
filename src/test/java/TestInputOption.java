@@ -10,40 +10,37 @@ public class TestInputOption {
         InputOption inputOption1 = InputOption.getInstance();
         InputOption inputOption2 = InputOption.getInstance();
 
-        assertTrue(inputOption1 == inputOption2);
+        ModeOption FirstModeOption1 = FirstModeOption.getInstance();
+        ModeOption FirstModeOption2 = FirstModeOption.getInstance();
+
+        ModeOption SecondModeOption1 = SecondModeOption.getInstance();
+        ModeOption SecondModeOption2 = SecondModeOption.getInstance();
+
+        assertAll(() -> assertTrue(inputOption1 == inputOption2),
+                () -> assertTrue(FirstModeOption1 == FirstModeOption2),
+                () -> assertTrue(SecondModeOption1 == SecondModeOption2));
     }
 
     @Test
-    public void Test_isActivatedOption(){
-        assertFalse(inputOption.isActivatedOption(Option.DAY));
+    public void Test_Correct_ModeOption1() {
+        String[] cmd = {"MOD","-p","","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(cmd);
+        assertTrue(inputOption.getActivatedOption(inputOption.OPTION1) == Option.PRINT);
     }
 
     @Test
-    public void Test_setOptions(){
-        String[] options = {"-p", "-f", ""};
-        inputOption.setOptions(options);
-        assertAll(() -> assertTrue(inputOption.isActivatedOption(Option.PRINT)),
-                () -> assertTrue(inputOption.isActivatedOption(Option.FIRST)),
-                () -> assertFalse(inputOption.isActivatedOption(Option.DAY)));
+    public void Test_Correct_ModeOption2() {
+        String[] cmd = {"MOD","","-f","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(cmd);
+        assertTrue(inputOption.getActivatedOption(inputOption.OPTION2) == Option.FIRST_NAME);
     }
 
     @Test
-    public void Test_repitition(){
-        String[] previousOptions = {"-p", "-f", ""};
-        String[] nextOptions = {"", "-m", ""};
-
-        inputOption.setOptions(previousOptions);
-        inputOption.setOptions(nextOptions);
-
-        assertAll(() -> assertFalse(inputOption.isActivatedOption(Option.PRINT)),
-                () -> assertTrue(inputOption.isActivatedOption(Option.MIDDLE_OR_MONTH)));
-    }
-
-    @Test
-    public void Test_isInvalidOption() {
-        String[] options = {"-p", "-f", "-l"};
-        inputOption.setOptions(options);
-        assertFalse(inputOption.isActivatedOption(Option.FIRST));
+    public void Test_Correct_getOperationMode() {
+        String[] cmd = {"MOD","","-f","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(cmd);
+        System.out.println(inputOption.getOperationMode(inputOption.OPTION1));
+        assertTrue("MOD".equals(inputOption.getOperationMode(inputOption.OPTION1)));
     }
 }
 
