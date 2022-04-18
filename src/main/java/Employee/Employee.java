@@ -1,3 +1,5 @@
+package Employee;
+
 public class Employee implements Comparable<Employee>{
     private Name name;
     private EmployeeNumber employeeNum;

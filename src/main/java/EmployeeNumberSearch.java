@@ -1,3 +1,5 @@
+import Employee.Employee;
+
 public class EmployeeNumberSearch implements SearchPolicy{
 
     @Override
