@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 public class EmployeeService {
     private SearchPolicy searchPolicy;
+    private ArrayList<Employee> employees;
 
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
-
-    private ArrayList<Employee> employees;
 
     EmployeeService(){
         employees = new ArrayList<Employee>();
@@ -29,7 +28,7 @@ public class EmployeeService {
     }
 
     public ArrayList<Employee> modify(String fromType, String fromValue, String toType, String toValue){
-        ArrayList<Employee> targetEmployee = searchPolicy.search(fromType, fromValue);
+        ArrayList<Employee> targetEmployee = searchPolicy.search(employees, fromValue);
         for(Employee emp : targetEmployee){
             changeEmpInfo(emp, toType, toValue);
         }
@@ -58,10 +57,36 @@ public class EmployeeService {
                 emp.setCerti(toValue);
                 break;
         }
+
+    }
+
+    private void choosePolicy(String type){
+        switch (type)
+        {
+            case "employeeNum":
+                searchPolicy = new EmployeeNumberSearch();
+                break;
+            case "name":
+                searchPolicy = new NameSearch();
+                break;
+            case "cl":
+                searchPolicy = new ClSearch();
+                break;
+            case "phoneNum":
+                searchPolicy = new PhoneSearch();
+                break;
+            case "birthday":
+                searchPolicy = new BirthSearch();
+                break;
+            case "certi":
+                searchPolicy = new CertiSearch();
+                break;
+        }
     }
 
     public ArrayList<Employee> search(String type, String value) {
-        ArrayList<Employee> targetEmployee = searchPolicy.search(type, value);
+        choosePolicy(type);
+        ArrayList<Employee> targetEmployee = searchPolicy.search(employees, value);
         return (ArrayList<Employee>) targetEmployee.clone();
     }
 }
