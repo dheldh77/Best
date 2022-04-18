@@ -1,3 +1,5 @@
+package Employee;
+
 public class EmployeeNumber {
     private String employeeNumber;
     private int year;

@@ -1,17 +1,17 @@
-public class BirthdaySearch implements SearchPolicy {
+public class BirthSearch implements SearchPolicy {
     InputOption inputOption;
     Employee emp;
     String source;
 
 
-    BirthdaySearch(){}
+    BirthSearch(){}
     @Override
-    public boolean search(Employee emp, String source) {
+    public boolean search(Employee emp,String source) {
         inputOption = InputOption.getInstance();
         this.emp = emp;
         this.source=source;
         //option2값이 없는경우
-        if(inputOption.isActivatedOption(Option.NONE)){
+        if(inputOption.equals("")){
             return matchAll(source);
         }
         //option2값이 있는경우
@@ -19,7 +19,9 @@ public class BirthdaySearch implements SearchPolicy {
     }
 
     private boolean matchAll(String source) {
-        return source.equals(emp.getBirthDate());
+        if(source.equals(emp.getBirthDate()))
+            return true;
+        return false;
     }
 
     private boolean matchPart(){

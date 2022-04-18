@@ -1,7 +1,9 @@
-public class EmployeeNumberSearch implements SearchPolicy {
+public class EmployeeNumberSearch implements SearchPolicy{
 
     @Override
     public boolean search(Employee emp, String source) {
-        return source.equals(emp.getEmpNum());
+        if(source.equals(emp.getEmpNum()))
+            return true;
+        return false;
     }
 }
