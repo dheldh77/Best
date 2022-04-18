@@ -1,8 +1,8 @@
 public class ClSearch implements SearchPolicy{
-    Employee emp = null;
+
     @Override
-    public boolean search(String source) {
-        if(source.equals(emp.getCl()))
+    public boolean search(Employee emp,String source) {
+        if(source.equals(emp.getCareer()))
             return true;
         return false;
     }
