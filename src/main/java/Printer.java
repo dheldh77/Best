@@ -3,14 +3,10 @@ import java.util.ArrayList;
 public class Printer {
     private InputOption inputOption;
     private SortAlgorithm sortAlgo;
-    public Printer() {
-        inputOption = InputOption.getInstance();
-    }
 
-    public void SelectAlgorithm(String sortName){
-        if("Selection".equals(sortName)){
-            sortAlgo = new SelectionSort();
-        }
+    public Printer(String sortName) {
+        SelectAlgorithm(sortName);
+        inputOption = InputOption.getInstance();
     }
 
     public void print(String cmd, ArrayList<Employee> searchResult) {
@@ -19,30 +15,36 @@ public class Printer {
             System.out.println(cmd + ",NONE");
         }
         // -p 옵션이 없을 때
-        else if (!inputOption.isValidOption(Option.PRINT)) {
+        else if (!inputOption.isActivatedOption(Option.PRINT)) {
             System.out.println(cmd + "," + searchResult.size());
         }
         // 그 외 조건에서는 record 출력
         // 최대 5개까지만 출력
-        else{
+        else {
             sortAlgo.executeSort(searchResult);
 
-           int printCnt = 0;
-            for(Employee empl : searchResult){
+            int printCnt = 0;
+            for (Employee empl : searchResult) {
                 printCnt++;
                 String printSet = String.join(
                         ",",
                         cmd,
-                        empl.getEmployeeNum(),
+                        empl.getEmpNum(),
                         empl.getName(),
+                        empl.getCareer(),
                         empl.getPhoneNum(),
-                        empl.getBirthDay(),
-                        empl.getCareer())
+                        empl.getBirthDate(),
+                        empl.getCerti());
                 System.out.println(printSet);
 
-                if(printCnt >= 5)
+                if (printCnt >= 5)
                     break;
             }
+        }
+    }
+    private void SelectAlgorithm(String sortName) {
+        if ("Selection".equals(sortName)) {
+            sortAlgo = new SelectionSort();
         }
     }
 }
