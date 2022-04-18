@@ -1,3 +1,4 @@
+import Employee.Employee;
 import Option.Option;
 
 public class NameSearch implements SearchPolicy {

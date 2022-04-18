@@ -1,16 +1,18 @@
+import Employee.Employee;
+import Option.InputOption;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Commander {
-    EmployeeService empServ;
     Executor executor;
     Printer printer;
-
+    EmployeeService empServ;
 
     public void init() {
+        executor = new Executor();
+        printer = new Printer();
         empServ = new EmployeeService();
-//        executor = new Executor(empServ);
-        printer = new Printer("Selection");
     }
 
     private ArrayList<ArrayList<String>> Read(String fileName){
@@ -20,16 +22,16 @@ public class Commander {
     private ArrayList<Employee> Execute(ArrayList<String> cmd){
         switch(cmd.get(0)){
             case "ADD" :
-//                return executor.add(cmd);
+//                return executor.add(cmd, empServ);
                 break;
             case "MOD" :
-//                return executor.modify(cmd);
+//                return executor.modify(cmd, empServ);
                 break;
             case "DEL" :
-//                return executor.delete(cmd);
+//                return executor.delete(cmd, empServ);
                 break;
             case "SCH" :
-//                return executor.search(cmd);
+//                return executor.search(cmd, empServ);
                 break;
             default :
 //                return null;
@@ -37,8 +39,8 @@ public class Commander {
         return null;
     }
 
-    private void Print(String cmd, ArrayList<Employee> employees){
-        printer.print(employees);
+    private void Print(InputOption printOption, ArrayList<Employee> employees){
+//        printer.print(printOption, employees);
     }
 
     public void run() {
@@ -46,7 +48,7 @@ public class Commander {
         for (Iterator<ArrayList<String>> iter = cmds.stream().iterator(); iter.hasNext(); ) {
             ArrayList<String> cmd = iter.next();
             ArrayList<Employee> employees = Execute(cmd);
-            Print(cmd.get(0), employees);
+            Print(InputOption.getInstance(), employees);
         }
     }
 }

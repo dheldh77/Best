@@ -1,3 +1,5 @@
+import Employee.Employee;
+
 public class CertiSearch implements SearchPolicy{
 
     @Override
