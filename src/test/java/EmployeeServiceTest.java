@@ -12,16 +12,16 @@ public class EmployeeServiceTest {
     @Test
     public void addTest(){
         EmployeeService empServMock = mock(EmployeeService.class);
-        empServMock.add("VXIHXOTH JHOP","15123099",
-                "010-3112-2609","19771211","CL3","ADV");
-        verify(empServMock).add("VXIHXOTH JHOP","15123099",
-                "010-3112-2609","19771211","CL3","ADV");
+        empServMock.add("15123099","VXIHXOTH JHOP",
+                "CL3","010-3112-2609","19771211","ADV");
+        verify(empServMock).add("15123099","VXIHXOTH JHOP",
+                "CL3","010-3112-2609","19771211","ADV");
     }
 
     @Test
     public void deleteTest(){
-        empServ.add("VXIHXOTH JHOP","15123099",
-                "010-3112-2609","19771211","CL3","ADV");
+        empServ.add("15123099","VXIHXOTH JHOP",
+                "CL3","010-3112-2609","19771211","ADV");
         ArrayList<Employee> employees = empServ.delete("name", "VXIHXOTH JHOP");
         assertEquals(0, empServ.getEmployees().size());
         assertEquals("VXIHXOTH JHOP", employees.get(0).getName());
@@ -30,17 +30,17 @@ public class EmployeeServiceTest {
 
     @Test
     public void modifyTest(){
-        empServ.add("VXIHXOTH JHOP","15123099",
-                "010-3112-2609","19771211","CL3","ADV");
+        empServ.add("15123099","VXIHXOTH JHOP",
+                "CL3","010-3112-2609","19771211","ADV");
         ArrayList<Employee> employees = empServ.modify("name", "VXIHXOTH JHOP", "cl", "CL4");
         assertEquals(1, empServ.getEmployees().size());
-        assertEquals("CL5", employees.get(0).getCareer());
+        assertEquals("CL3", employees.get(0).getCareer());
     }
 
     @Test
     public void searchTest(){
-        empServ.add("VXIHXOTH JHOP","15123099",
-                "010-3112-2609","19771211","CL3","ADV");
+        empServ.add("15123099","VXIHXOTH JHOP",
+                "CL3","010-3112-2609","19771211","ADV");
         ArrayList<Employee> employees = empServ.search("name", "VXIHXOTH JHOP");
         assertEquals("VXIHXOTH JHOP", employees.get(0).getName());
     }

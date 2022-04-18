@@ -1,5 +1,3 @@
-import Option.InputOption;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -40,7 +38,7 @@ public class Commander {
     }
 
     private void Print(String cmd, ArrayList<Employee> employees){
-        printer.print(cmd, employees);
+        printer.print(employees);
     }
 
     public void run() {
