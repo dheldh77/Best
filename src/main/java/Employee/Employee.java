@@ -1,3 +1,5 @@
+package Employee;
+
 public class Employee implements Comparable<Employee>{
     private Name name;
     private EmployeeNumber employeeNum;
@@ -76,6 +78,6 @@ public class Employee implements Comparable<Employee>{
 
     @Override
     public String toString(){
-        return getEmpNum() + "," + getName() + "," + getCareer() + "," + getPhoneNum() + "," + getBirthDate() + getCerti();
+        return getEmpNum() + "," + getName() + "," + getCareer() + "," + getPhoneNum() + "," + getBirthDate() + "," + getCerti();
     }
 }
