@@ -9,7 +9,7 @@ public class NameSearch implements SearchPolicy {
         this.source=source;
         this.emp = emp;
         //option값이 없는 경우
-        if(inputOption==null) {
+        if(inputOption.isActivatedOption(Option.NONE)) {
             return matchAll(source);
         }
         //option값이 있는 경우
@@ -17,16 +17,11 @@ public class NameSearch implements SearchPolicy {
     }
 
     private boolean matchAll(String source) {
-        if(source.equals(emp.getName()))
-            return true;
-         return false;
+        return source.equals(emp.getName());
     }
 
     private boolean matchPart() {
-        if((inputOption.isActivatedOption(Option.FIRST) && source.equals(emp.getFirstName()))||(inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getSecondName()))) {
-            return true;
-        }
-        return false;
+        return ((inputOption.isActivatedOption(Option.FIRST) && source.equals(emp.getFirstName()))||(inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getSecondName())));
     }
 
 }

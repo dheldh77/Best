@@ -1,4 +1,4 @@
-public class PhoneSearch implements SearchPolicy {
+public class PhoneNumberSearch implements SearchPolicy {
     InputOption inputOption;
     String source;
     Employee emp ;
@@ -9,7 +9,7 @@ public class PhoneSearch implements SearchPolicy {
         this.emp = emp;
         this.source=source;
         //옵션값이 없는 경우
-        if(inputOption==null){
+        if(inputOption.isActivatedOption(Option.NONE)){
             return matchAll();
         }
         //옵션값이 있는 경우
@@ -17,14 +17,11 @@ public class PhoneSearch implements SearchPolicy {
     }
 
     private boolean matchAll() {
-        if(source.equals(emp.getPhoneNum()))
-            return true;
-        return false;
+        return source.equals(emp.getPhoneNum());
     }
 
     private boolean matchPart(){
-        if((inputOption.isActivatedOption(Option.MIDDLE_OR_MONTH) && source.equals(emp.getPhoneMiddleNum())) ||  (inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getPhoneEndNum())))
-            return true;
-        return false;
+        return((inputOption.isActivatedOption(Option.MIDDLE_OR_MONTH) && source.equals(emp.getPhoneMiddleNum())) ||  (inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getPhoneEndNum())));
+
     }
 }
