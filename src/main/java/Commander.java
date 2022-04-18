@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Commander {
+    EmployeeService empServ;
     Executor executor;
     Printer printer;
-    EmployeeService empServ;
+
 
     public void init() {
-        executor = new Executor();
-        printer = new Printer();
         empServ = new EmployeeService();
+//        executor = new Executor(empServ);
+        printer = new Printer("Selection");
     }
 
     private ArrayList<ArrayList<String>> Read(String fileName){
@@ -19,16 +20,16 @@ public class Commander {
     private ArrayList<Employee> Execute(ArrayList<String> cmd){
         switch(cmd.get(0)){
             case "ADD" :
-//                return executor.add(cmd, empServ);
+//                return executor.add(cmd);
                 break;
             case "MOD" :
-//                return executor.modify(cmd, empServ);
+//                return executor.modify(cmd);
                 break;
             case "DEL" :
-//                return executor.delete(cmd, empServ);
+//                return executor.delete(cmd);
                 break;
             case "SCH" :
-//                return executor.search(cmd, empServ);
+//                return executor.search(cmd);
                 break;
             default :
 //                return null;
@@ -36,8 +37,8 @@ public class Commander {
         return null;
     }
 
-    private void Print(InputOption printOption, ArrayList<Employee> employees){
-//        printer.print(printOption, employees);
+    private void Print(String cmd, ArrayList<Employee> employees){
+        printer.print(cmd, employees);
     }
 
     public void run() {
@@ -45,7 +46,7 @@ public class Commander {
         for (Iterator<ArrayList<String>> iter = cmds.stream().iterator(); iter.hasNext(); ) {
             ArrayList<String> cmd = iter.next();
             ArrayList<Employee> employees = Execute(cmd);
-            Print(InputOption.getInstance(), employees);
+            Print(cmd.get(0), employees);
         }
     }
 }
