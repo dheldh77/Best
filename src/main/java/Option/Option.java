@@ -1,3 +1,5 @@
+package Option;
+
 public enum Option {
     FIRST_NAME,
     LAST_NAME,

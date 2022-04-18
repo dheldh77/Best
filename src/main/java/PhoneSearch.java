@@ -1,3 +1,5 @@
+import Option.Option;
+
 public class PhoneSearch implements SearchPolicy {
     InputOption inputOption;
     String source;

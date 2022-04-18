@@ -1,3 +1,5 @@
+package Option;
+
 public class FirstModeOption extends ModeOption {
     private static final ModeOption INSTANCE = new FirstModeOption();
 

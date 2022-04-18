@@ -1,3 +1,5 @@
+import Option.Option;
+
 public class BirthSearch implements SearchPolicy {
     InputOption inputOption;
     Employee emp;
