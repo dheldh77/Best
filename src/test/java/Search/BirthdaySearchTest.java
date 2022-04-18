@@ -1,3 +1,4 @@
+package Search;
 
 import Employee.Employee;
 import Option.InputOption;
@@ -12,14 +13,27 @@ public class BirthdaySearchTest {
     Employee employee = new Employee("min yujin","20027866","010-4567-2345","19920922","CL2","PRO");
     Employee employee2 = new Employee("min yujin","20027866","010-4567-2345","18201120","CL2","PRO");
     BirthdaySearch birthdaySearch = new BirthdaySearch();
+    InputOption inputOption = InputOption.getInstance();;
+
+    @Test
+    @DisplayName("DATE test")
+    public void birthTestDate() {
+
+        String[] cmd = {"SCH","","","","birthday","19920922"};
+        inputOption.setOptions(cmd);
+
+        assertTrue(birthdaySearch.search(employee,"19920922"));
+        assertFalse(birthdaySearch.search(employee2,"19920922"));
+    }
+
+
 
     @Test
     @DisplayName("YEAR test")
     public void birthTestYear() {
-        String[] options = {"", "-y", ""};
-        InputOption inputOption = InputOption.getInstance();
 
-        inputOption.setOptions(options);
+        String[] cmd = {"SCH","","-y","","birthday","1992"};
+        inputOption.setOptions(cmd);
 
         assertTrue(birthdaySearch.search(employee,"1992"));
         assertFalse(birthdaySearch.search(employee2,"1992"));
@@ -28,10 +42,8 @@ public class BirthdaySearchTest {
     @Test
     @DisplayName("MONTH test")
     public void birthTestMonth() {
-        String[] options = {"", "-m", ""};
-        InputOption inputOption = InputOption.getInstance();
-
-        inputOption.setOptions(options);
+        String[]  cmd = {"SCH","","-m","","birthday","09"};
+        inputOption.setOptions(cmd);
 
         assertTrue(birthdaySearch.search(employee,"09"));
         assertFalse(birthdaySearch.search(employee2,"09"));
@@ -41,25 +53,13 @@ public class BirthdaySearchTest {
     @Test
     @DisplayName("DAY test")
     public void birthTestDay() {
-        String[] options = {"", "-d", ""};
-        InputOption inputOption = InputOption.getInstance();
-
-        inputOption.setOptions(options);
+        String[]  cmd = {"SCH","","-d","","birthday","22"};
+        inputOption.setOptions(cmd);
 
         assertTrue(birthdaySearch.search(employee,"22"));
         assertFalse(birthdaySearch.search(employee2,"22"));
     }
 
-    @Test
-    @DisplayName("DATE test")
-    public void birthTestDate() {
-        String[] options = {"", "", ""};
-        InputOption inputOption = InputOption.getInstance();
 
-        inputOption.setOptions(options);
-
-        assertTrue(birthdaySearch.search(employee,"19920922"));
-        assertFalse(birthdaySearch.search(employee2,"19920922"));
-    }
 
 }

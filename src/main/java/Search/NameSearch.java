@@ -1,21 +1,23 @@
+package Search;
+
 import Employee.Employee;
 import Option.Option;
+import Option.InputOption;
 
 public class NameSearch implements SearchPolicy {
-    InputOption inputOption;
+    Option option;
     String source;
     Employee emp;
 
+
     @Override
     public boolean search(Employee emp, String source)  {
-        inputOption = InputOption.getInstance();
+        this.option = InputOption.getInstance().getActivatedOption(1);
         this.source=source;
         this.emp = emp;
-        //option값이 없는 경우
-        if(inputOption.isActivatedOption(Option.NONE)) {
+        if(option==Option.NONE) {
             return matchAll(source);
         }
-        //option값이 있는 경우
         return matchPart();
     }
 
@@ -24,7 +26,7 @@ public class NameSearch implements SearchPolicy {
     }
 
     private boolean matchPart() {
-        return ((inputOption.isActivatedOption(Option.FIRST) && source.equals(emp.getFirstName()))||(inputOption.isActivatedOption(Option.LAST) && source.equals(emp.getSecondName())));
+        return ((option==Option.FIRST_NAME) && source.equals(emp.getFirstName()))||(option==Option.LAST_NAME && source.equals(emp.getSecondName()));
     }
 
 }
