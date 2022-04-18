@@ -1,8 +1,11 @@
 public enum Option {
-    FIRST,
-    MIDDLE_OR_MONTH,
-    LAST,
-    YEAR,
-    DAY,
-    PRINT
+    FIRST_NAME,
+    LAST_NAME,
+    MIDDLE_PHONENUMBER,
+    LAST_PHONENUMBER,
+    BIRTHDAY_YEAR,
+    BIRTHDAY_MONTH,
+    BIRTHDAY_DAY,
+    PRINT,
+    NONE
 }
