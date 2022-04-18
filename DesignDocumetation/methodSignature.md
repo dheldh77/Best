@@ -1,10 +1,10 @@
 # Class
 
-> InputOption : 입력 옵션 설정 클래스
-- public InputOption getInstance(); // InputOption 인스턴스 반환
+> Option.InputOption : 입력 옵션 설정 클래스
+- public Option.InputOption getInstance(); // Option.InputOption 인스턴스 반환
 - public void setOptions(String[] args); // 입력으로부터 옵션 설정, 입력 파라미터 {"", "", ""}
 - public boolean isValidOption(); // 입력 옵션이 유효한 옵션인지 확인
-- public boolean isActivatedOption(Option opt); // 파라미터로 넘겨진 옵션이 활성화 되어있는지 확인
+- public boolean isActivatedOption(Option.Option opt); // 파라미터로 넘겨진 옵션이 활성화 되어있는지 확인
 
 <br>
 

@@ -1,3 +1,5 @@
+import Option.Option;
+
 public class NameSearch implements SearchPolicy {
     InputOption inputOption;
     String source;
