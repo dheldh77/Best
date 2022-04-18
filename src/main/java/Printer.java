@@ -9,13 +9,14 @@ public class Printer {
         inputOption = InputOption.getInstance();
     }
 
-    public void print(String cmd, ArrayList<Employee> searchResult) {
+    public void print(ArrayList<Employee> searchResult) {
+        String cmd = inputOption.getOperationMode(inputOption.OPTION1);
         // record 결과가 없을 때
         if (searchResult.size() == 0) {
             System.out.println(cmd + ",NONE");
         }
         // -p 옵션이 없을 때
-        else if (!inputOption.isActivatedOption(Option.PRINT)) {
+        else if (inputOption.getActivatedOption(inputOption.OPTION1) != Option.PRINT) {
             System.out.println(cmd + "," + searchResult.size());
         }
         // 그 외 조건에서는 record 출력
@@ -29,12 +30,7 @@ public class Printer {
                 String printSet = String.join(
                         ",",
                         cmd,
-                        empl.getEmpNum(),
-                        empl.getName(),
-                        empl.getCareer(),
-                        empl.getPhoneNum(),
-                        empl.getBirthDate(),
-                        empl.getCerti());
+                        empl.toString());
                 System.out.println(printSet);
 
                 if (printCnt >= 5)
@@ -45,6 +41,9 @@ public class Printer {
     private void SelectAlgorithm(String sortName) {
         if ("Selection".equals(sortName)) {
             sortAlgo = new SelectionSort();
+        }
+        else if("Inner".equals(sortName)){
+            sortAlgo = new InnerSort();
         }
     }
 }
