@@ -44,5 +44,31 @@ public class InputOptionTest {
         System.out.println(inputOption.getOperationMode(inputOption.OPTION1));
         assertTrue("MOD".equals(inputOption.getOperationMode(inputOption.OPTION1)));
     }
+
+    @Test
+    public void Test_incorrect_setModeOption2() {
+        String[] cmd = {"MOD","","-l","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(cmd);
+        assertTrue(inputOption.getActivatedOption(inputOption.OPTION2) == Option.LAST_NAME);
+    }
+
+    @Test
+    public void Test_Correct_setModeOption1_Repitition() {
+        String[] previousCmd = {"MOD","-p","","","name","FB NTAWR","birthday","20050520"};
+        String[] nextCmd = {"MOD","","","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(previousCmd);
+        inputOption.setOptions(nextCmd);
+        assertTrue(inputOption.getActivatedOption(inputOption.OPTION1) == Option.NONE);
+    }
+
+    @Test
+    public void Test_Correct_setModeOption2_Repitition() {
+        String[] previousCmd = {"MOD","-p","-f","","name","FB NTAWR","birthday","20050520"};
+        String[] nextCmd = {"MOD","","-l","","name","FB NTAWR","birthday","20050520"};
+        inputOption.setOptions(previousCmd);
+        inputOption.setOptions(nextCmd);
+        assertTrue(inputOption.getActivatedOption(inputOption.OPTION2) == Option.LAST_NAME);
+    }
+
 }
 
