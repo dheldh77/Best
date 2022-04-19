@@ -1,6 +1,8 @@
 package Commander;
 
 import Employee.Employee;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Commander {
@@ -15,10 +17,10 @@ public class Commander {
         this.outputTxt = outputTxt;
     }
 
-    public void init() {
+    public void init() throws IOException {
         empServ = new EmployeeService();
         executor = new Executor(empServ);
-        printer = new Printer("Inner");
+        printer = new Printer("Inner", this.outputTxt);
     }
 
     private ArrayList<ArrayList<String>> Read(String fileName){
@@ -40,16 +42,17 @@ public class Commander {
         return null;
     }
 
-    private void Print(ArrayList<Employee> employees){
+    private void Print(ArrayList<Employee> employees) throws IOException {
         printer.print(employees);
     }
 
-    public void run() {
+    public void run() throws IOException {
         ArrayList<ArrayList<String>> cmds = Read(inputTxt);
         for (ArrayList<String> cmd : cmds) {
             ArrayList<Employee> employees = Execute(cmd);
             if (employees == null) continue;
             Print(employees);
         }
+        printer.EndPrint();
     }
 }

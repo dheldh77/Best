@@ -1,8 +1,10 @@
 import Commander.Commander;
 
+import java.io.IOException;
+
 public class Application {
-    public static void main(String[] args){
-        Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+    public static void main(String[] args) throws IOException {
+        Commander commander = new Commander(args[0], args[1]);
         commander.init();
         commander.run();
     }
