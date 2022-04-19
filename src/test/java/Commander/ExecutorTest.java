@@ -36,8 +36,10 @@ public class ExecutorTest {
         ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
         executor.add(cmd1);
 
+        String inputCmd2 = "DEL,-p,-l, ,name,LVARW";
+        ArrayList<String> cmd2 = new ArrayList<>(Arrays.asList(inputCmd2.split(",")));
         // 삭제된 Record 반환
-        ArrayList<Employee> result = executor.delete(cmd1);
+        ArrayList<Employee> result = executor.delete(cmd2);
 
         assertEquals(1, result.size());
         assertEquals("88114052", result.get(0).getEmpNum());
@@ -61,8 +63,11 @@ public class ExecutorTest {
         ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
         executor.add(cmd1);
 
+        String inputCmd2 = "MOD,-p, , ,name,NQ LVARW,birthday,20050520";
+        ArrayList<String> cmd2 = new ArrayList<>(Arrays.asList(inputCmd2.split(",")));
+
         // 변경 전 Record 반환
-        ArrayList<Employee> result = executor.modify(cmd1);
+        ArrayList<Employee> result = executor.modify(cmd2);
 
         assertEquals(1, result.size());
         assertEquals("88114052", result.get(0).getEmpNum());
@@ -86,8 +91,11 @@ public class ExecutorTest {
         ArrayList<String> cmd1 = new ArrayList<>(Arrays.asList(inputCmd1.split(",")));
         executor.add(cmd1);
 
+        String inputCmd2 = "SCH, , , ,employeeNum,88114052";
+        ArrayList<String> cmd2 = new ArrayList<>(Arrays.asList(inputCmd2.split(",")));
+
         // 찾은 Record 반환
-        ArrayList<Employee> result = executor.search(cmd1);
+        ArrayList<Employee> result = executor.search(cmd2);
 
         assertEquals(1, result.size());
         assertEquals("88114052", result.get(0).getEmpNum());

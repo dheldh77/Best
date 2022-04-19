@@ -31,6 +31,7 @@ public class CommanderTest {
     @Test
     void executeTest() throws Exception {
         Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
@@ -50,6 +51,7 @@ public class CommanderTest {
     @Test
     void printTest() throws Exception{
         Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
