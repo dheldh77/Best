@@ -8,12 +8,12 @@
 
 <br>
 
-> Commander.Reader : 파일을 읽어, 파싱한 결과를 ArrayList에 담아 리턴
+> Commander.Commander.Reader : 파일을 읽어, 파싱한 결과를 ArrayList에 담아 리턴
 - public ArrayList<ArrayList<String>> read(String filename)
 
 <br>
   
-> Commander.Executor : setOption 후 EmployeeService의 각 함수 호출(Service에서 구현한 파라미터에 맞게 입력)
+> Commander.Commander.Executor : setOption 후 EmployeeService의 각 함수 호출(Service에서 구현한 파라미터에 맞게 입력)
 - public ArrayList<Employee> add(ArrayList<String> cmd)
 - public ArrayList<Employee> delete(ArrayList<String> cmd)
 - public ArrayList<Employee> modify(ArrayList<String> cmd)
@@ -21,19 +21,19 @@
 
 <br>
   
-> Commander.Printer : 결과 출력 함수
+> Commander.Commander.Printer : 결과 출력 함수
 - public void print(String cmd, ArrayList<Employee> searchResult)
   
 <br>
   
-> Commander 
+> Commander.Commander 
 
 - public void init(); // 변수초기화
 - public void run(); // 동작 시작
 
 <br>
 
-> EmployeeService 
+> Commander.EmployeeService 
 
 - public ArrayList<Employee> add(Employee employee)
 - public ArrayList<Employee> delete(String type, Employee employee)
