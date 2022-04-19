@@ -13,6 +13,13 @@ import static org.mockito.Mockito.*;
 public class CommanderTest {
 
     @Test
+    void runTest() throws IOException {
+        Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "src\\test\\resources\\output_20_20.txt");
+        commander.init();
+        commander.run();
+    }
+
+    @Test
     void initTest() throws IOException {
         Commander commander = mock(Commander.class);
         commander.init();
