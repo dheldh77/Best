@@ -23,7 +23,7 @@ public class EmployeeService {
 
     public ArrayList<Employee> delete(String type, String value){
         ArrayList<Employee> targetEmployee = search(type, value);
-        ArrayList<Employee> cloneEmployee = (ArrayList<Employee>) targetEmployee.clone();
+        ArrayList<Employee> cloneEmployee = copyEmployees(targetEmployee);
         for(Employee emp : targetEmployee){
             employees.remove(emp);
         }
@@ -31,11 +31,12 @@ public class EmployeeService {
     }
 
     public ArrayList<Employee> modify(String fromType, String fromValue, String toType, String toValue){
-        ArrayList<Employee> targetEmployee = searchPolicy.search(employees, fromValue);
+        ArrayList<Employee> targetEmployee = search(fromType, fromValue);
+        ArrayList<Employee> cloneEmployee = copyEmployees(targetEmployee);
         for(Employee emp : targetEmployee){
             changeEmpInfo(emp, toType, toValue);
         }
-        return (ArrayList<Employee>) targetEmployee.clone();
+        return (ArrayList<Employee>) cloneEmployee;
     }
 
     private void changeEmpInfo(Employee emp, String toType, String toValue){
@@ -54,7 +55,7 @@ public class EmployeeService {
                 emp.setPhoneNum(toValue);
                 break;
             case "birthday":
-                emp.setBirthDay(toValue);
+                emp.setBirthDate(toValue);
                 break;
             case "certi":
                 emp.setCerti(toValue);
@@ -90,6 +91,14 @@ public class EmployeeService {
     public ArrayList<Employee> search(String type, String value) {
         choosePolicy(type);
         ArrayList<Employee> targetEmployee = searchPolicy.search(employees, value);
-        return (ArrayList<Employee>) targetEmployee.clone();
+        return targetEmployee;
+    }
+
+    public ArrayList<Employee> copyEmployees(ArrayList<Employee> employees){
+        ArrayList<Employee> result = new ArrayList<Employee>();
+        for(Employee emp : employees) {
+            result.add(emp.Clone());
+        }
+        return result;
     }
 }
