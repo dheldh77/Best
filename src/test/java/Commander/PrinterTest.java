@@ -31,7 +31,9 @@ public class PrinterTest {
         ArrayList<Employee> employees = new ArrayList<>();
 
         InputOption inputOption = InputOption.getInstance();
+
         String[] cmd = {"MOD", " ", " ", " ", "birthday", "04"};
+
         inputOption.setOptions(cmd);
 
         Printer printer = new Printer("Selection");
@@ -56,6 +58,7 @@ public class PrinterTest {
 
         InputOption inputOption = InputOption.getInstance();
         String[] cmd = {"MOD", " ", " ", " ", "birthday", "04"};
+
         inputOption.setOptions(cmd);
 
         assertNotSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
@@ -83,6 +86,7 @@ public class PrinterTest {
 
         InputOption inputOption = InputOption.getInstance();
         String[] cmd = {"MOD", "-p", "-d", " ", "birthday", "04"};
+
         inputOption.setOptions(cmd);
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
@@ -113,6 +117,7 @@ public class PrinterTest {
 
         InputOption inputOption = InputOption.getInstance();
         String[] cmd = {"MOD", "-p", "-d", " ", "birthday", "04"};
+
         inputOption.setOptions(cmd);
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);

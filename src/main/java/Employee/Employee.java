@@ -81,4 +81,8 @@ public class Employee implements Comparable<Employee>{
     public String toString(){
         return getEmpNum() + "," + getName() + "," + getCareer() + "," + getPhoneNum() + "," + getBirthDate() + "," + getCerti();
     }
+
+    public Employee Clone(){
+        return new Employee(getEmpNum(), getName(), getCareer(), getPhoneNum(), getBirthDate(), getCerti());
+    }
 }

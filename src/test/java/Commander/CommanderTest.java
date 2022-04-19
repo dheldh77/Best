@@ -22,15 +22,16 @@ public class CommanderTest {
     }
     @Test
     void readTest() throws Exception {
-        Commander commander = new Commander();
-        Method method = commander.getClass().getDeclaredMethod("Read", String.class);
+        Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+        Method method = commander.getClass().getDeclaredMethod("Read");
         method.setAccessible(true);
-        ArrayList<ArrayList<String>> result = (ArrayList<ArrayList<String>>) method.invoke(commander, "src\\test\\resources\\input_20_20.txt");
+        ArrayList<ArrayList<String>> result = (ArrayList<ArrayList<String>>) method.invoke(commander);
         assertEquals(40, result.size());
     }
     @Test
     void executeTest() throws Exception {
-        Commander commander = new Commander();
+        Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
@@ -49,7 +50,8 @@ public class CommanderTest {
 
     @Test
     void printTest() throws Exception{
-        Commander commander = new Commander();
+        Commander commander = new Commander("src\\test\\resources\\input_20_20.txt", "output");
+
         EmployeeService empServ = new EmployeeService();
         ArrayList<String> cmd = new ArrayList<String>();
         cmd.add("ADD");
