@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmployeeTest {
-    Employee employee = new Employee("VXIHXOTH JHOP","15123099",
-                                  "010-3112-2609","19771211","CL3","ADV");
+    Employee employee = new Employee("15123099","VXIHXOTH JHOP",
+                                  "CL3","010-3112-2609","19771211","ADV");
 
     @Test
     void getNameTest() {

@@ -7,15 +7,28 @@ import Option.InputOption;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PrinterTest {
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
     @Test
-    void printNoneTest() {
+    void printNoneTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         InputOption inputOption = InputOption.getInstance();
@@ -24,18 +37,14 @@ public class PrinterTest {
 
         inputOption.setOptions(cmd);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        printer.print(employees);
+        assertEquals("MOD,NONE", outContent.toString().replace("\n", "").replace("\r", ""));
 
-        String outFileName = "outputTest.txt";
-        printer.print(employees, outFileName);
-
-        String outputFileResult = readOutputFile(outFileName);
-
-        assertEquals("MOD,NONE", outputFileResult);
     }
 
     @Test
-    void printRecordCntTest() {
+    void printRecordCntTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -55,18 +64,14 @@ public class PrinterTest {
 
         assertNotSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        printer.print(employees);
 
-        String outFileName = "outputTest.txt";
-        printer.print(employees, outFileName);
-
-        String outputFileResult = readOutputFile(outFileName);
-
-        assertEquals("MOD,9", outputFileResult);
+        assertEquals("MOD,9", outContent.toString().replace("\n", "").replace("\r", ""));
     }
 
     @Test
-    void printRecordTest() {
+    void printRecordTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -87,25 +92,21 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        printer.print(employees);
 
-        String outFileName = "outputTest.txt";
-        printer.print(employees, outFileName);
-
-        String outputFileResult = readOutputFile(outFileName);
-
-        String expectedResult = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\r\n" +
+        String result = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\r\n" +
                 "MOD,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV\r\n" +
                 "MOD,08123556,WN XV,CL1,010-7986-5047,20100614,PRO\r\n" +
                 "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
                 "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\r\n";
 
-        assertEquals(expectedResult, outputFileResult);
+        assertEquals(result, outContent.toString());
 
     }
 
     @Test
-    void printRecordSecondNumOrderTest() {
+    void printRecordSecondNumOrderTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -122,37 +123,16 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Inner");
+        Printer printer = new Printer("Inner", "src\\test\\resources\\output_20_20.txt");
+        printer.print(employees);
 
-        String outFileName = "outputTest.txt";
-        printer.print(employees, outFileName);
-
-        String outputFileResult = readOutputFile(outFileName);
-
-        String expectedResult = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
+        String result = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
                 "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\r\n" +
                 "MOD,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\r\n" +
                 "MOD,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\r\n" +
                 "MOD,18117906,TWU QSOLT,CL4,010-6672-7186,20030413,PRO\r\n";
 
-        assertEquals(expectedResult, outputFileResult);
+        assertEquals(result, outContent.toString());
 
-    }
-
-    private String readOutputFile(String filePath) {
-        FileInputStream fileStream;
-        String outputFileResult = "";
-        try {
-            fileStream = new FileInputStream(filePath);
-
-            byte[] readBuffer = new byte[fileStream.available()];
-            while (fileStream.read(readBuffer) != -1) {
-            }
-            outputFileResult += new String(readBuffer);
-
-        } catch (Exception e) {
-            System.out.println("File Read Error!" + e);
-        }
-        return outputFileResult;
     }
 }
