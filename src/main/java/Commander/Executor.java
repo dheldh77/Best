@@ -1,6 +1,5 @@
 package Commander;
 
-import
 import Employee.Employee;
 import Option.InputOption;
 

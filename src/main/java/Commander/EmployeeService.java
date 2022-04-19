@@ -1,4 +1,7 @@
+package Commander;
+
 import Employee.Employee;
+import Search.*;
 
 import java.util.ArrayList;
 
@@ -10,7 +13,7 @@ public class EmployeeService {
         return employees;
     }
 
-    EmployeeService(){
+    public EmployeeService(){
         employees = new ArrayList<Employee>();
     }
 
@@ -73,10 +76,10 @@ public class EmployeeService {
                 searchPolicy = new ClSearch();
                 break;
             case "phoneNum":
-                searchPolicy = new PhoneSearch();
+                searchPolicy = new PhoneNumberSearch();
                 break;
             case "birthday":
-                searchPolicy = new BirthSearch();
+                searchPolicy = new BirthdaySearch();
                 break;
             case "certi":
                 searchPolicy = new CertiSearch();
