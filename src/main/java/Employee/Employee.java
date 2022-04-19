@@ -7,11 +7,12 @@ public class Employee implements Comparable<Employee>{
     private Birthday birthday;
     private String Career;
     private String Certi;
-    public Employee(String name, String employeeNum, String phoneNum, String birthday, String cl, String certi){
-        setEmployee(name, employeeNum, phoneNum, birthday, cl, certi);
+
+    public Employee(String employeeNum, String name, String cl, String phoneNum, String birthday, String certi){
+        setEmployee(employeeNum, name, cl, phoneNum, birthday, certi);
     }
 
-    public void setEmployee(String name, String employeeNum, String phoneNum, String birthday, String cl, String Certi){
+    public void setEmployee(String employeeNum, String name, String cl, String phoneNum, String birthday, String Certi){
         this.name = new Name(name);
         this.employeeNum = new EmployeeNumber(employeeNum);
         this.phoneNum = new PhoneNumber(phoneNum);
