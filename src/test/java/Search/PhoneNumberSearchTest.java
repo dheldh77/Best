@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PhoneNumberSearchTest {
 
-    Employee employee = new Employee("min yujin","20027866","010-4567-2345","19920922","CL2","PRO");
-    Employee employee2 = new Employee("park seojoon","19273944","010-4394-2355","18201120","CL3","PRO");
+    Employee employee = new Employee("20027866","min yujin","CL2","010-4567-2345","19920922","PRO");
+    Employee employee2 = new Employee("19273944","park seojoon","CL3","010-4527-2344","18201120","PRO");
     InputOption inputOption = InputOption.getInstance();
     PhoneNumberSearch phoneNumberSearch = new PhoneNumberSearch();
 

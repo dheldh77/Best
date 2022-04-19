@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CertiSearchTest {
 
-    Employee employee = new Employee("min yujin","20027866","010-4567-2345","19920922","CL2","PRO");
-    Employee employee2 = new Employee("min yujin","20027866","010-4567-2345","18201120","CL2","PRO");
+    Employee employee = new Employee("20027866","min yujin","CL2","010-4567-2345","19920922","PRO");
+    Employee employee2 = new Employee("20027366","min yujin","CL2","010-4567-2345","18201120","PRO");
     @Test
     @DisplayName("CERTI test")
     public void certiTest(){
