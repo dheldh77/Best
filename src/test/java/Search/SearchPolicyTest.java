@@ -127,7 +127,7 @@ class SearchPolicyTest {
         employees.add(new Employee("20027866", "min yujin", "CL2","010-4567-2345", "19920922",  "PRO"));
         employees.add(new Employee("19973944","park seojoon",  "CL3","010-4394-2355", "18201120",  "PRO"));
         employees.add(new Employee("19223944","park minyoung",  "CL4","010-4394-9375", "18201120",  "EX"));
-        employees.add(new Employee("20223944","min seojoon",  "CL3","010-44567-2323", "18211123",  "ADV"));
+        employees.add(new Employee("20223944","min seojoon",  "CL3","010-4456-2323", "18211123",  "ADV"));
 
     }
 
