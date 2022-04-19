@@ -124,10 +124,10 @@ class SearchPolicyTest {
 
     private void putEmployees() {
         employees=new ArrayList<>();
-        employees.add(new Employee("min yujin", "20027866", "010-4567-2345", "19920922", "CL2", "PRO"));
-        employees.add(new Employee("park seojoon", "19273944", "010-4394-2355", "18201120", "CL3", "PRO"));
-        employees.add(new Employee("park minyoung", "19223944", "010-4394-9375", "18201120", "CL4", "EX"));
-        employees.add(new Employee("min seojoon", "20223944", "010-44567-2323", "18211123", "CL3", "ADV"));
+        employees.add(new Employee("20027866", "min yujin", "CL2","010-4567-2345", "19920922",  "PRO"));
+        employees.add(new Employee("19973944","park seojoon",  "CL3","010-4394-2355", "18201120",  "PRO"));
+        employees.add(new Employee("19223944","park minyoung",  "CL4","010-4394-9375", "18201120",  "EX"));
+        employees.add(new Employee("20223944","min seojoon",  "CL3","010-44567-2323", "18211123",  "ADV"));
 
     }
 
