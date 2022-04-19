@@ -7,6 +7,7 @@ import Option.InputOption;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class PrinterTest {
     }
 
     @Test
-    void printNoneTest() {
+    void printNoneTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         InputOption inputOption = InputOption.getInstance();
@@ -36,14 +37,14 @@ public class PrinterTest {
 
         inputOption.setOptions(cmd);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
         printer.print(employees);
         assertEquals("MOD,NONE", outContent.toString().replace("\n", "").replace("\r", ""));
 
     }
 
     @Test
-    void printRecordCntTest() {
+    void printRecordCntTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -63,14 +64,14 @@ public class PrinterTest {
 
         assertNotSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
         printer.print(employees);
 
         assertEquals("MOD,9", outContent.toString().replace("\n", "").replace("\r", ""));
     }
 
     @Test
-    void printRecordTest() {
+    void printRecordTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -91,7 +92,7 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection");
+        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
         printer.print(employees);
 
         String result = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\r\n" +
@@ -105,7 +106,7 @@ public class PrinterTest {
     }
 
     @Test
-    void printRecordSecondNumOrderTest() {
+    void printRecordSecondNumOrderTest() throws IOException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
@@ -122,7 +123,7 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Inner");
+        Printer printer = new Printer("Inner", "src\\test\\resources\\output_20_20.txt");
         printer.print(employees);
 
         String result = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +

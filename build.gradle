@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.5.1'
 }
 
 group 'org.example'
@@ -17,4 +18,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+bootJar {
+    mainClass = 'Application'
 }
