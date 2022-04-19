@@ -7,6 +7,13 @@ public class Commander {
     EmployeeService empServ;
     Executor executor;
     Printer printer;
+    String inputTxt;
+    String outputTxt;
+
+    public Commander(String inputTxt, String outputTxt){
+        this.inputTxt = inputTxt;
+        this.outputTxt = outputTxt;
+    }
 
     public void init() {
         empServ = new EmployeeService();
@@ -38,7 +45,7 @@ public class Commander {
     }
 
     public void run() {
-        ArrayList<ArrayList<String>> cmds = Read("src\\test\\resources\\input_20_20.txt");
+        ArrayList<ArrayList<String>> cmds = Read(inputTxt);
         for (ArrayList<String> cmd : cmds) {
             ArrayList<Employee> employees = Execute(cmd);
             if (employees == null) continue;
