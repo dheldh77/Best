@@ -74,7 +74,7 @@
 
 > Class Diagram
 
-![Class Diagram](DesignDocumetation/KakaoTalk_Photo_2022-04-15-09-28-28.png)
+![Class Diagram](https://github.com/dheldh77/Best/blob/main/DesignDocumetation/design_ver_2.png)
 
 <br>
 
