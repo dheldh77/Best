@@ -156,18 +156,18 @@ public class PrinterTest {
     }
 
     private String readOutputFile(String outputFileName) throws FileNotFoundException {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         File file = new File(outputFileName);
         BufferedReader br = new BufferedReader(new FileReader(file));
         try {
             String line;
             while ((line = br.readLine()) != null) {
-                result += line + "\n";
+                result.append(line).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return result.toString();
     }
 }
