@@ -34,22 +34,27 @@ public class Printer {
         // 그 외 조건에서는 record 출력
         // 최대 5개까지만 출력
         else {
-            sortAlgo.executeSort(searchResult);
-
-            int printCnt = 0;
-            for (Employee empl : searchResult) {
-                printCnt++;
-                String printSet = String.join(
-                        ",",
-                        cmd,
-                        empl.toString());
-                fileWriter.write(printSet + "\n");
-
-                if (printCnt >= 5)
-                    break;
-            }
+            printExecResult(searchResult, cmd);
         }
     }
+
+    private void printExecResult(ArrayList<Employee> searchResult, String cmd) throws IOException {
+        sortAlgo.executeSort(searchResult);
+
+        int printCnt = 0;
+        for (Employee empl : searchResult) {
+            printCnt++;
+            String printSet = String.join(
+                    ",",
+                    cmd,
+                    empl.toString());
+            fileWriter.write(printSet + "\n");
+
+            if (printCnt >= 5)
+                break;
+        }
+    }
+
     public void EndPrint() throws IOException {
         fileWriter.flush();
         fileWriter.close();
