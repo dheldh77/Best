@@ -1,8 +1,6 @@
 package Sort;
 
 import Employee.Employee;
-import Sort.SelectionSort;
-import Sort.SortAlgorithm;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -12,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SortTest {
     private ArrayList<Employee> orderedEmployees;
+    private ArrayList<Employee> employees;
 
     @BeforeEach
     void setExpectedEmployees() {
@@ -26,22 +25,11 @@ public class SortTest {
         orderedEmployees.add(new Employee("18115040", "TTETHU HBO", "CL3", "010-4581-2050", "20080718", "ADV"));
         orderedEmployees.add(new Employee("18117906", "TWU QSOLT", "CL4", "010-6672-7186", "20030413", "PRO"));
         orderedEmployees.add(new Employee("19129568", "SRERLALH HMEF", "CL2", "010-3091-9521", "19640910", "PRO"));
-
     }
 
     @Test
     void selectionSortTest() {
-        ArrayList<Employee> employees = new ArrayList<>();
-
-        employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-        employees.add(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
-        employees.add(new Employee("18115040", "TTETHU HBO", "CL3", "010-4581-2050", "20080718", "ADV"));
-        employees.add(new Employee("88114052", "NQ LVARW", "CL4", "010-4528-3059", "19911021", "PRO"));
-        employees.add(new Employee("19129568", "SRERLALH HMEF", "CL2", "010-3091-9521", "19640910", "PRO"));
-        employees.add(new Employee("17111236", "VSID TVO", "CL1", "010-3669-1077", "20120718", "PRO"));
-        employees.add(new Employee("18117906", "TWU QSOLT", "CL4", "010-6672-7186", "20030413", "PRO"));
-        employees.add(new Employee("08123556", "WN XV", "CL1", "010-7986-5047", "20100614", "PRO"));
-        employees.add(new Employee("02117175", "SBILHUT LDEXRI", "CL4", "010-2814-1699", "19950704", "ADV"));
+        addEmployees();
 
         SortAlgorithm sortAlgo = new SelectionSort();
         sortAlgo.executeSort(employees);
@@ -58,17 +46,7 @@ public class SortTest {
 
     @Test
     void InnerSortTest() {
-        ArrayList<Employee> employees = new ArrayList<>();
-
-        employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-        employees.add(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
-        employees.add(new Employee("18115040", "TTETHU HBO", "CL3", "010-4581-2050", "20080718", "ADV"));
-        employees.add(new Employee("88114052", "NQ LVARW", "CL4", "010-4528-3059", "19911021", "PRO"));
-        employees.add(new Employee("19129568", "SRERLALH HMEF", "CL2", "010-3091-9521", "19640910", "PRO"));
-        employees.add(new Employee("17111236", "VSID TVO", "CL1", "010-3669-1077", "20120718", "PRO"));
-        employees.add(new Employee("18117906", "TWU QSOLT", "CL4", "010-6672-7186", "20030413", "PRO"));
-        employees.add(new Employee("08123556", "WN XV", "CL1", "010-7986-5047", "20100614", "PRO"));
-        employees.add(new Employee("02117175", "SBILHUT LDEXRI", "CL4", "010-2814-1699", "19950704", "ADV"));
+        addEmployees();
 
         for (Employee employee: employees){
             System.out.println(employee.toString());
@@ -90,5 +68,19 @@ public class SortTest {
             assertEquals(orderedEmployees.get(i).getCareer(), employees.get(i).getCareer());
             assertEquals(orderedEmployees.get(i).getCerti(), employees.get(i).getCerti());
         }
+    }
+
+    private void addEmployees() {
+        employees = new ArrayList<>();
+
+        employees.add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+        employees.add(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+        employees.add(new Employee("18115040", "TTETHU HBO", "CL3", "010-4581-2050", "20080718", "ADV"));
+        employees.add(new Employee("88114052", "NQ LVARW", "CL4", "010-4528-3059", "19911021", "PRO"));
+        employees.add(new Employee("19129568", "SRERLALH HMEF", "CL2", "010-3091-9521", "19640910", "PRO"));
+        employees.add(new Employee("17111236", "VSID TVO", "CL1", "010-3669-1077", "20120718", "PRO"));
+        employees.add(new Employee("18117906", "TWU QSOLT", "CL4", "010-6672-7186", "20030413", "PRO"));
+        employees.add(new Employee("08123556", "WN XV", "CL1", "010-7986-5047", "20100614", "PRO"));
+        employees.add(new Employee("02117175", "SBILHUT LDEXRI", "CL4", "010-2814-1699", "19950704", "ADV"));
     }
 }
