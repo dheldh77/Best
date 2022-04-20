@@ -23,11 +23,13 @@ public class InputOption {
         }
     }
 
-    public Option getActivatedOption(int optionNum) {
+    public  Option getActivatedOption(int optionNum) {
         return options.get(optionNum).getActivatedOption();
     }
 
     public String getOperationMode(int optionNum) {
         return options.get(optionNum).getOpeartionMode();
     }
+
+
 }
