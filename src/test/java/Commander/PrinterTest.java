@@ -6,9 +6,7 @@ import Option.InputOption;
 
 import org.junit.jupiter.api.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,11 +35,18 @@ public class PrinterTest {
 
         inputOption.setOptions(cmd);
 
-        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        String outputFileName = "src\\test\\resources\\outputTest.txt";
+        Printer printer = new Printer("Inner", outputFileName);
         printer.print(employees);
-        assertEquals("MOD,NONE", outContent.toString().replace("\n", "").replace("\r", ""));
+
+        printer.EndPrint();
+
+        String outputResult = readOutputFile(outputFileName);
+
+        assertEquals("MOD,NONE\n", outputResult);
 
     }
+
 
     @Test
     void printRecordCntTest() throws IOException {
@@ -64,10 +69,15 @@ public class PrinterTest {
 
         assertNotSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        String outputFileName = "src\\test\\resources\\outputTest.txt";
+        Printer printer = new Printer("Inner", outputFileName);
         printer.print(employees);
 
-        assertEquals("MOD,9", outContent.toString().replace("\n", "").replace("\r", ""));
+        printer.EndPrint();
+
+        String outputResult = readOutputFile(outputFileName);
+
+        assertEquals("MOD,9\n", outputResult);
     }
 
     @Test
@@ -92,16 +102,21 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Selection", "src\\test\\resources\\output_20_20.txt");
+        String outputFileName = "src\\test\\resources\\outputTest.txt";
+        Printer printer = new Printer("Inner", outputFileName);
         printer.print(employees);
 
-        String result = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\r\n" +
-                "MOD,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV\r\n" +
-                "MOD,08123556,WN XV,CL1,010-7986-5047,20100614,PRO\r\n" +
-                "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
-                "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\r\n";
+        printer.EndPrint();
 
-        assertEquals(result, outContent.toString());
+        String outputResult = readOutputFile(outputFileName);
+
+        String result = "MOD,88114052,NQ LVARW,CL4,010-4528-3059,19911021,PRO\n" +
+                "MOD,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV\n" +
+                "MOD,08123556,WN XV,CL1,010-7986-5047,20100614,PRO\n" +
+                "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\n" +
+                "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\n";
+
+        assertEquals(result, outputResult);
 
     }
 
@@ -123,16 +138,36 @@ public class PrinterTest {
 
         assertSame(inputOption.getActivatedOption(inputOption.OPTION1), Option.PRINT);
 
-        Printer printer = new Printer("Inner", "src\\test\\resources\\output_20_20.txt");
+        String outputFileName = "src\\test\\resources\\outputTest.txt";
+        Printer printer = new Printer("Inner", outputFileName);
         printer.print(employees);
 
-        String result = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\r\n" +
-                "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\r\n" +
-                "MOD,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\r\n" +
-                "MOD,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\r\n" +
-                "MOD,18117906,TWU QSOLT,CL4,010-6672-7186,20030413,PRO\r\n";
+        printer.EndPrint();
 
-        assertEquals(result, outContent.toString());
+        String outputResult = readOutputFile(outputFileName);
 
+        String result = "MOD,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV\n" +
+                "MOD,17111236,VSID TVO,CL1,010-3669-1077,20120718,PRO\n" +
+                "MOD,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO\n" +
+                "MOD,18115040,TTETHU HBO,CL3,010-4581-2050,20080718,ADV\n" +
+                "MOD,18117906,TWU QSOLT,CL4,010-6672-7186,20030413,PRO\n";
+
+        assertEquals(result, outputResult);
+    }
+
+    private String readOutputFile(String outputFileName) throws FileNotFoundException {
+        String result = "";
+
+        File file = new File(outputFileName);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        try {
+            String line;
+            while ((line = br.readLine()) != null) {
+                result += line + "\n";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

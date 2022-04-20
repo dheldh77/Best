@@ -25,14 +25,10 @@ public class Printer {
         String cmd = inputOption.getOperationMode(inputOption.OPTION1);
         // record 결과가 없을 때
         if (searchResult.size() == 0) {
-            //TODO 추후 제거 필요
-//            System.out.println(cmd + ",NONE");
             fileWriter.write(cmd + ",NONE" + "\n");
         }
         // -p 옵션이 없을 때
         else if (inputOption.getActivatedOption(inputOption.OPTION1) != Option.PRINT) {
-            //TODO 추후 제거 필요
-//            System.out.println(cmd + "," + searchResult.size());
             fileWriter.write(cmd + "," + searchResult.size() + "\n");
         }
         // 그 외 조건에서는 record 출력
@@ -47,8 +43,6 @@ public class Printer {
                         ",",
                         cmd,
                         empl.toString());
-                //TODO 추후 제거 필요
-//                System.out.println(printSet);
                 fileWriter.write(printSet + "\n");
 
                 if (printCnt >= 5)
