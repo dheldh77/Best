@@ -5,22 +5,17 @@ import Option.InputOption;
 import Option.Option;
 
 public class BirthdaySearch implements SearchPolicy {
-    Option option;
-    Employee emp;
-    String source;
+    private Option option;
+    private Employee emp;
+    private String source;
 
-    public BirthdaySearch(){}
     @Override
     public boolean search(Employee emp,String source) {
-        this.option=  InputOption.getInstance().getActivatedOption(1);
+        this.option=  InputOption.getInstance().getActivatedOption(InputOption.getInstance().OPTION2);
         this.emp = emp;
         this.source=source;
-        //option2값이 없는경우
-        if(option== Option.NONE){
-            return matchAll(source);
-        }
-        //option2값이 있는경우
-        return matchPart();
+        //option2값에 따라 다른 함수를 타도록
+        return (option== Option.NONE)?matchAll(source):matchPart();
     }
 
     private boolean matchAll(String source) {
@@ -28,7 +23,15 @@ public class BirthdaySearch implements SearchPolicy {
     }
 
     private boolean matchPart(){
-        return ((option== Option.BIRTHDAY_YEAR && source.equals(emp.getBirthYear())) ||  (option== Option.BIRTHDAY_MONTH && source.equals(emp.getBirthMonth())) || (option== Option.BIRTHDAY_DAY && source.equals(emp.getBirthDay())));
-
+        return matchYear()||matchMonth()||matchDay();
+    }
+    private boolean matchYear(){
+        return (option== Option.BIRTHDAY_YEAR) && source.equals(emp.getBirthYear());
+    }
+    private boolean matchMonth(){
+        return (option== Option.BIRTHDAY_MONTH) && source.equals(emp.getBirthMonth());
+    }
+    private boolean matchDay(){
+        return (option== Option.BIRTHDAY_DAY) && source.equals(emp.getBirthDay());
     }
 }

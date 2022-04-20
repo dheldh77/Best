@@ -2,7 +2,6 @@ package Commander;
 
 import Employee.Employee;
 import Search.*;
-
 import java.util.ArrayList;
 
 public class EmployeeService {
@@ -36,7 +35,7 @@ public class EmployeeService {
         for(Employee emp : targetEmployee){
             changeEmpInfo(emp, toType, toValue);
         }
-        return (ArrayList<Employee>) cloneEmployee;
+        return cloneEmployee;
     }
 
     private void changeEmpInfo(Employee emp, String toType, String toValue){
