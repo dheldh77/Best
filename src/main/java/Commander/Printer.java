@@ -38,6 +38,11 @@ public class Printer {
         }
     }
 
+    public void EndPrint() throws IOException {
+        fileWriter.flush();
+        fileWriter.close();
+    }
+
     private void printExecResult(ArrayList<Employee> searchResult, String cmd) throws IOException {
         sortAlgo.executeSort(searchResult);
 
@@ -53,11 +58,6 @@ public class Printer {
             if (printCnt >= 5)
                 break;
         }
-    }
-
-    public void EndPrint() throws IOException {
-        fileWriter.flush();
-        fileWriter.close();
     }
 
     private void SelectAlgorithm(String sortName) {

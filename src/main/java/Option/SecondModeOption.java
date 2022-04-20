@@ -3,11 +3,6 @@ package Option;
 public class SecondModeOption extends ModeOption {
     private static final ModeOption INSTANCE = new SecondModeOption();
 
-    private SecondModeOption() {
-        clearOption();
-        setUpEnableOptionList();
-    }
-
     public static ModeOption getInstance() {
         return INSTANCE;
     }
@@ -29,4 +24,8 @@ public class SecondModeOption extends ModeOption {
         putEnableOption("birthday -d", Option.BIRTHDAY_DAY);
     }
 
+    private SecondModeOption() {
+        clearOption();
+        setUpEnableOptionList();
+    }
 }
