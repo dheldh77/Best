@@ -8,11 +8,6 @@ public class InputOption {
     private static final InputOption INSTANCE = new InputOption();
     private ArrayList<ModeOption> options = new ArrayList<>();
 
-    private InputOption() {
-        options.add(FirstModeOption.getInstance());
-        options.add(SecondModeOption.getInstance());
-    }
-
     public static InputOption getInstance() {
         return INSTANCE;
     }
@@ -31,5 +26,8 @@ public class InputOption {
         return options.get(optionNum).getOpeartionMode();
     }
 
-
+    private InputOption() {
+        options.add(FirstModeOption.getInstance());
+        options.add(SecondModeOption.getInstance());
+    }
 }

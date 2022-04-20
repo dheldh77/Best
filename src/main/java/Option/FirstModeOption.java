@@ -3,11 +3,6 @@ package Option;
 public class FirstModeOption extends ModeOption {
     private static final ModeOption INSTANCE = new FirstModeOption();
 
-    private FirstModeOption() {
-        clearOption();
-        setUpEnableOptionList();
-    }
-
     public static ModeOption getInstance() {
         return INSTANCE;
     }
@@ -23,4 +18,8 @@ public class FirstModeOption extends ModeOption {
         putEnableOption("-p", Option.PRINT);
     }
 
+    private FirstModeOption() {
+        clearOption();
+        setUpEnableOptionList();
+    }
 }

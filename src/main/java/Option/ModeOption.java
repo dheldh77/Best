@@ -16,7 +16,7 @@ public abstract class ModeOption {
         return this.opeartionMode;
     }
 
-    protected void putEnableOption(String input, Option opt){
+    protected void putEnableOption(String input, Option opt) {
         enableOptionList.put(input, opt);
     }
 
@@ -31,10 +31,6 @@ public abstract class ModeOption {
 
     }
 
-    private void setOperationMode(String operationMode) {
-        this.opeartionMode = operationMode;
-    }
-
     protected void setActivatedOption(String opt) {
         if (enableOptionList.containsKey(opt)) {
             activatedOption = enableOptionList.get(opt);
@@ -45,4 +41,7 @@ public abstract class ModeOption {
 
     protected abstract void setUpEnableOptionList();
 
+    private void setOperationMode(String operationMode) {
+        this.opeartionMode = operationMode;
+    }
 }
